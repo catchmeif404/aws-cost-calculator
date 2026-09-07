@@ -22,6 +22,6 @@ public class SiteVisitController {
 
     @PostMapping("/ping")
     public void ping(@Valid @RequestBody SiteVisitPingRequest request) {
-        siteVisitService.recordVisit(request.hostname());
+        siteVisitService.recordVisit(request.hostname(), request.visitorId());
     }
 }

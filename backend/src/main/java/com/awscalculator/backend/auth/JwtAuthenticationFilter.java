@@ -1,6 +1,5 @@
 package com.awscalculator.backend.auth;
 
-import com.awscalculator.backend.metrics.UserActivityRecorder;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,7 +20,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtTokenProvider jwtTokenProvider;
     private final UserRepository userRepository;
-    private final UserActivityRecorder userActivityRecorder;
 
     @Override
     protected void doFilterInternal(
@@ -40,7 +38,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                     userId, null, List.of(new SimpleGrantedAuthority("ROLE_" + role.name()))
             );
             SecurityContextHolder.getContext().setAuthentication(authentication);
-            userActivityRecorder.recordActive(userId);
         }
 
         filterChain.doFilter(request, response);

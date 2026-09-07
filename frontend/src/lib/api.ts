@@ -368,12 +368,34 @@ export function updateAdminUserRole(userId: number, role: "USER" | "ADMIN") {
 
 // Fire-and-forget beacon called once per page load — never throws, and doesn't parse a response
 // body (the endpoint returns none), unlike the typed request() helper used everywhere else.
+const VISITOR_ID_STORAGE_KEY = "acc_visitor_id";
+
+// Anonymous, persisted per-browser (not per-login) - the ping fires on every page load
+// regardless of auth state, so this is what distinct-visitor DAU/MAU is computed from
+// server-side. Not a user identity: never sent anywhere except this ping.
+function getOrCreateVisitorId(): string | null {
+  try {
+    const existing = window.localStorage.getItem(VISITOR_ID_STORAGE_KEY);
+    if (existing) return existing;
+    const generated = crypto.randomUUID();
+    window.localStorage.setItem(VISITOR_ID_STORAGE_KEY, generated);
+    return generated;
+  } catch {
+    // Storage blocked (private mode, disabled localStorage, etc.) - the ping still counts
+    // toward raw view totals, just not distinct-visitor counts.
+    return null;
+  }
+}
+
 export function pingSiteVisit() {
   if (typeof window === "undefined") return;
   fetch(`${API_BASE_URL}/api/site-visits/ping`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ hostname: window.location.hostname }),
+    body: JSON.stringify({
+      hostname: window.location.hostname,
+      visitorId: getOrCreateVisitorId(),
+    }),
     keepalive: true,
   }).catch(() => undefined);
 }

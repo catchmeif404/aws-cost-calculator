@@ -14,12 +14,12 @@ public class SiteVisitService {
     private final SiteVisitEventRepository siteVisitEventRepository;
 
     @Transactional
-    public void recordVisit(String hostname) {
+    public void recordVisit(String hostname, String visitorId) {
         String key = normalize(hostname);
         if (key == null) {
             return;
         }
-        siteVisitEventRepository.save(new SiteVisitEvent(key, Instant.now()));
+        siteVisitEventRepository.save(new SiteVisitEvent(key, normalizeVisitorId(visitorId), Instant.now()));
     }
 
     private String normalize(String hostname) {
@@ -27,5 +27,9 @@ public class SiteVisitService {
             return null;
         }
         return hostname.trim().toLowerCase();
+    }
+
+    private String normalizeVisitorId(String visitorId) {
+        return (visitorId == null || visitorId.isBlank()) ? null : visitorId.trim();
     }
 }

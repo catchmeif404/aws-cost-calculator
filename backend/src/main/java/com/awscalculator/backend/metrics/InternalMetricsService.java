@@ -20,7 +20,6 @@ public class InternalMetricsService {
 
     private final UserRepository userRepository;
     private final SiteVisitEventRepository siteVisitEventRepository;
-    private final UserActivityEventRepository userActivityEventRepository;
 
     @Transactional(readOnly = true)
     public MetricsSummaryResponse getSummary() {
@@ -33,9 +32,11 @@ public class InternalMetricsService {
                 .toList();
         ViewsSummary views = new ViewsSummary(totalViews, daily);
 
-        LocalDate today = LocalDate.now();
-        long dau = userActivityEventRepository.countDistinctOnDate(today);
-        long mau = userActivityEventRepository.countDistinctSince(today.minusDays(DAILY_WINDOW_DAYS));
+        // Distinct anonymous visitor id from site-visit pings, not logged-in activity - the ping
+        // fires on every page load regardless of auth state, so this already covers logged-in
+        // users' browsers too without needing a separate (and double-counting) signal.
+        long dau = siteVisitEventRepository.countDistinctVisitorsOnDate(LocalDate.now());
+        long mau = siteVisitEventRepository.countDistinctVisitorsSince(since);
         ActiveUsersSummary activeUsers = new ActiveUsersSummary(dau, mau);
 
         return new MetricsSummaryResponse(memberCount, views, activeUsers);
