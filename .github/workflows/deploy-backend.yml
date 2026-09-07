@@ -6,16 +6,19 @@ name: Deploy Backend
 # That's been turned off in the Railway dashboard in favor of this workflow, so backend and
 # frontend deploy together, only on a vX.Y.Z release tag (see deploy-frontend.yml / root
 # CLAUDE.md's release policy) instead of on every commit to main.
+#
+# `railway up` runs from the REPO ROOT (not backend/) so it uploads the same shape Railway's own
+# GitHub-integration/dashboard build expects - both paths then agree on Root Directory = `backend`
+# with no divergence. Running it from within backend/ instead uploads a snapshot already scoped
+# to that folder, which conflicts with Root Directory = `backend` and intermittently fails with
+# "Root directory '/backend' was not found in the deployed source" - see root CLAUDE.md's Railway
+# checklist for the full story (hit this exact failure on catchmeif404-admin).
 
 on:
   push:
     tags:
       - "v*"
   workflow_dispatch:
-
-defaults:
-  run:
-    working-directory: backend
 
 jobs:
   deploy:
