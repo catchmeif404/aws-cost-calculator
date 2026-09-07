@@ -19,16 +19,29 @@ public class ResourceCatalogService {
 
     @Transactional(readOnly = true)
     public List<ResourceCatalogItem> items() {
+        return items("ko");
+    }
+
+    // Catalog entries are seeded once (in Korean) and DB-editable via admin tooling for pricing,
+    // not for this catalog — so rather than duplicating every row per locale, English labels are
+    // looked up from KO_TO_EN at read time (see that map's comment) when locale isn't Korean.
+    @Transactional(readOnly = true)
+    public List<ResourceCatalogItem> items(String locale) {
+        boolean english = locale != null && locale.toLowerCase().startsWith("en");
         List<ResourceCatalogEntry> entries = resourceCatalogEntryRepository.findAllByOrderByIdAsc();
         Map<Long, Map<String, List<ResourceCatalogOption>>> optionsByEntryAndField = optionsByEntryAndField(entries);
 
         return entries.stream()
                 .map(e -> new ResourceCatalogItem(
                         e.getType(), e.getKind(), e.getTitle(), e.getShortName(), e.getCategory(),
-                        e.getDescription(), e.getTone(), e.getDefaults(),
-                        withNormalizedOptions(e.getFields(), optionsByEntryAndField.getOrDefault(e.getId(), Map.of()))
+                        translate(e.getDescription(), english), e.getTone(), e.getDefaults(),
+                        withNormalizedOptions(e.getFields(), optionsByEntryAndField.getOrDefault(e.getId(), Map.of()), english)
                 ))
                 .toList();
+    }
+
+    private static String translate(String text, boolean english) {
+        return english ? KO_TO_EN.getOrDefault(text, text) : text;
     }
 
     @Transactional
@@ -81,12 +94,15 @@ public class ResourceCatalogService {
 
     private List<ResourceCatalogField> withNormalizedOptions(
             List<ResourceCatalogField> fields,
-            Map<String, List<ResourceCatalogOption>> optionsByField
+            Map<String, List<ResourceCatalogOption>> optionsByField,
+            boolean english
     ) {
         return fields.stream()
                 .map(field -> new ResourceCatalogField(
-                        field.key(), field.label(), field.type(), field.defaultValue(),
-                        optionsByField.getOrDefault(field.key(), List.of()),
+                        field.key(), translate(field.label(), english), field.type(), field.defaultValue(),
+                        optionsByField.getOrDefault(field.key(), List.of()).stream()
+                                .map(o -> new ResourceCatalogOption(translate(o.label(), english), o.value()))
+                                .toList(),
                         field.min(), field.max(), field.step(), field.costRelevant()
                 ))
                 .toList();
@@ -114,6 +130,126 @@ public class ResourceCatalogService {
                 ))
                 .toList();
     }
+
+    // English lookup for the Korean short descriptions / field labels / option labels baked into
+    // SEED_ITEMS below. Keyed by the exact Korean string, applied via translate() in items(locale)
+    // when the request's X-Locale is "en" (see ResourceCatalogController) — same X-Locale
+    // convention RecommendationController/OptimizationController/ExplanationController already
+    // use for AI-generated text. Adding a new seed item with Korean text needs a matching entry
+    // here, or it falls back to the raw Korean string untranslated.
+    private static final Map<String, String> KO_TO_EN = Map.<String, String>ofEntries(
+            Map.entry("API/웹 서버", "API / web server"),
+            Map.entry("로드밸런서", "Load balancer"),
+            Map.entry("아웃바운드", "Outbound"),
+            Map.entry("아웃바운드 (GB)", "Outbound (GB)"),
+            Map.entry("게이트웨이 수", "Gateways"),
+            Map.entry("서버리스", "Serverless"),
+            Map.entry("아키텍처", "Architecture"),
+            Map.entry("플랫폼", "Platform"),
+            Map.entry("배치", "Deployment"),
+            Map.entry("대상", "Destination"),
+            Map.entry("관계형 DB", "Relational DB"),
+            Map.entry("캐시/세션", "Cache / session"),
+            Map.entry("파일 저장소", "File storage"),
+            Map.entry("블록 스토리지", "Block storage"),
+            Map.entry("서버리스 API", "Serverless API"),
+            Map.entry("메시지 큐", "Message queue"),
+            Map.entry("알림 발행", "Notification publishing"),
+            Map.entry("공유 파일 스토리지", "Shared file storage"),
+            Map.entry("서버리스 관계형 DB", "Serverless relational DB"),
+            Map.entry("로그/검색", "Log / search"),
+            Map.entry("비밀 관리", "Secrets management"),
+            Map.entry("이벤트 버스", "Event bus"),
+            Map.entry("워크플로 오케스트레이션", "Workflow orchestration"),
+            Map.entry("로그/알람 모니터링", "Log / alarm monitoring"),
+            Map.entry("실시간 스트리밍", "Realtime streaming"),
+            Map.entry("웹 요청 보호", "Web request protection"),
+            Map.entry("SMTP/이메일 발송", "SMTP / email sending"),
+            Map.entry("Kubernetes 제어 플레인", "Kubernetes control plane"),
+            Map.entry("컨테이너 이미지 저장소", "Container image storage"),
+            Map.entry("감사 이벤트 추적", "Audit event tracking"),
+            Map.entry("ETL/크롤러", "ETL / crawler"),
+            Map.entry("쿼리 스캔", "Query scan"),
+            Map.entry("데이터 웨어하우스", "Data warehouse"),
+            Map.entry("관리형 Kafka", "Managed Kafka"),
+            Map.entry("사용자 인증", "User authentication"),
+            Map.entry("Nova Lite 토큰", "Nova Lite tokens"),
+            Map.entry("모델 호스팅", "Model hosting"),
+            Map.entry("키 관리", "Key management"),
+            Map.entry("전용 HSM", "Dedicated HSM"),
+            Map.entry("백업 저장소", "Backup storage"),
+            Map.entry("L4 로드 밸런서", "L4 load balancer"),
+            Map.entry("네트워크 어플라이언스", "Network appliance"),
+            Map.entry("CDN 캐싱", "CDN caching"),
+            Map.entry("외부 통신", "Outbound connectivity"),
+            Map.entry("VPC 연결", "VPC connection"),
+            Map.entry("VPC 허브", "VPC hub"),
+            Map.entry("프라이빗 연결", "Private connectivity"),
+            Map.entry("가상 서버", "Virtual server"),
+
+            Map.entry("월 데이터 전송 (GB)", "Monthly Data Transfer (GB)"),
+            Map.entry("예상 LCU", "Estimated LCU"),
+            Map.entry("Task 수", "Tasks"),
+            Map.entry("백업 보관일", "Backup Retention (days)"),
+            Map.entry("Node 수", "Nodes"),
+            Map.entry("노드 수", "Nodes"),
+            Map.entry("월 읽기 요청", "Monthly Read Requests"),
+            Map.entry("월 쓰기 요청", "Monthly Write Requests"),
+            Map.entry("실행 시간 (ms)", "Duration (ms)"),
+            Map.entry("메모리 (MB)", "Memory (MB)"),
+            Map.entry("인스턴스 수", "Instances"),
+            Map.entry("볼륨 크기 (GB)", "Volume Size (GB)"),
+            Map.entry("볼륨 수", "Volumes"),
+            Map.entry("월 처리량 (GB)", "Monthly Processed (GB)"),
+            Map.entry("처리량 (GB)", "Processed (GB)"),
+            Map.entry("Endpoint 수", "Endpoints"),
+            Map.entry("Attachment 수", "Attachments"),
+            Map.entry("월 요청 수", "Monthly Requests"),
+            Map.entry("월 발행 수", "Monthly Publishes"),
+            Map.entry("Secret 수", "Secrets"),
+            Map.entry("월 API 호출 수", "Monthly API Calls"),
+            Map.entry("Hosted Zone 수", "Hosted Zones"),
+            Map.entry("월 쿼리 수", "Monthly Queries"),
+            Map.entry("월 이벤트 수", "Monthly Events"),
+            Map.entry("Express (추정 제외)", "Express (not estimated)"),
+            Map.entry("월 실행 수", "Monthly Executions"),
+            Map.entry("실행당 상태 전이", "State Transitions per Execution"),
+            Map.entry("월 로그 수집량 (GB)", "Monthly Log Ingest (GB)"),
+            Map.entry("보관 로그 (GB-월)", "Stored Logs (GB-month)"),
+            Map.entry("표준 알람 수", "Standard Alarms"),
+            Map.entry("On-demand (추정 제외)", "On-demand (not estimated)"),
+            Map.entry("Shard 수", "Shards"),
+            Map.entry("월 PUT Payload Unit", "Monthly PUT Payload Units"),
+            Map.entry("Web ACL 수", "Web ACLs"),
+            Map.entry("Rule 수", "Rules"),
+            Map.entry("월 수신자 수", "Monthly Recipients"),
+            Map.entry("월 첨부/페이로드 (GB)", "Monthly Attachments/Payload (GB)"),
+            Map.entry("클러스터 수", "Clusters"),
+            Map.entry("이미지 저장량 (GB-월)", "Image Storage (GB-month)"),
+            Map.entry("월 관리 이벤트", "Monthly Management Events"),
+            Map.entry("월 데이터 이벤트", "Monthly Data Events"),
+            Map.entry("Lake 쿼리 스캔 (GB)", "Lake Query Scan (GB)"),
+            Map.entry("월 스캔량 (TB)", "Monthly Scanned (TB)"),
+            Map.entry("Managed Storage (GB-월)", "Managed Storage (GB-month)"),
+            Map.entry("브로커 수", "Brokers"),
+            Map.entry("스토리지 (GB-월)", "Storage (GB-month)"),
+            Map.entry("월 GraphQL 요청", "Monthly GraphQL Requests"),
+            Map.entry("실시간 연결 분", "Realtime Connection Minutes"),
+            Map.entry("월 활성 사용자 (MAU)", "Monthly Active Users (MAU)"),
+            Map.entry("입력 토큰 (1K 단위)", "Input Tokens (per 1K)"),
+            Map.entry("출력 토큰 (1K 단위)", "Output Tokens (per 1K)"),
+            Map.entry("호스팅 인스턴스 수", "Hosting Instances"),
+            Map.entry("Advanced Parameter 수", "Advanced Parameters"),
+            Map.entry("Parameter API 요청", "Parameter API Requests"),
+            Map.entry("Customer managed key 수", "Customer Managed Keys"),
+            Map.entry("월 KMS 요청", "Monthly KMS Requests"),
+            Map.entry("HSM 수", "HSMs"),
+            Map.entry("Warm backup (GB-월)", "Warm Backup (GB-month)"),
+            Map.entry("NLB 수", "NLBs"),
+            Map.entry("월 평균 NLCU", "Avg. Monthly NLCU"),
+            Map.entry("GWLB 수", "GWLBs"),
+            Map.entry("월 평균 GLCU", "Avg. Monthly GLCU")
+    );
 
     // Seed data — moved here from the old hardcoded ResourceCatalog.java, which the frontend used
     // to read directly on every request. Now this is only read once per newly-added type, at
