@@ -1,0 +1,32 @@
+name: Deploy Backend
+
+# Deploys the Spring Boot backend to Railway (Dockerfile build, see backend/railway.json).
+#
+# Railway's own GitHub integration used to auto-deploy this service on every push to main.
+# That's been turned off in the Railway dashboard in favor of this workflow, so backend and
+# frontend deploy together, only on a vX.Y.Z release tag (see deploy-frontend.yml / root
+# CLAUDE.md's release policy) instead of on every commit to main.
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: backend
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Railway CLI
+        run: npm install -g @railway/cli
+
+      - name: Deploy to Railway
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+        run: railway up --service backend --detach
