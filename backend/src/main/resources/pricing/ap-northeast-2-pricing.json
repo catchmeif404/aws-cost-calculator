@@ -1,0 +1,171 @@
+{
+  "meta": {
+    "region": "ap-northeast-2",
+    "source": "AWS Price List Bulk API (pricing.us-east-1.amazonaws.com)",
+    "fetchedAt": "2026-09-03T07:25:56Z"
+  },
+  "hoursPerMonth": 730,
+  "usdToKrw": 1380,
+  "ec2InstanceHour": {
+    "t3.small": 0.0260000000,
+    "t3.medium": 0.0520000000,
+    "m5.large": 0.1180000000,
+    "t3.micro": 0.0130000000
+  },
+  "ebsGp3GbMonth": 0.0912000000,
+  "ebsGp2GbMonth": 0.1140000000,
+  "ebsIo2GbMonth": 0.1278000000,
+  "natGatewayHour": 0.0590000000,
+  "natGatewayGbProcessed": 0.0590000000,
+  "rdsInstanceHour": {
+    "db.t4g.small": 0.0510000000,
+    "db.t4g.medium": 0.1020000000,
+    "db.t4g.micro": 0.0250000000,
+    "db.r6g.large": 0.2700000000
+  },
+  "rdsStorageGbMonth": 0.1310000000,
+  "rdsInstanceHourMultiAz": {
+    "db.t4g.micro": 0.0510000000,
+    "db.r6g.large": 0.5400000000,
+    "db.t4g.medium": 0.2030000000,
+    "db.t4g.small": 0.1020000000
+  },
+  "auroraServerlessAcuHour": 0.2000000000,
+  "auroraStorageGbMonth": 0.1200000000,
+  "redisNodeHour": {
+    "cache.t4g.medium": 0.0940000000,
+    "cache.t4g.micro": 0.0240000000,
+    "cache.t4g.small": 0.0470000000,
+    "cache.r6g.large": 0.2460000000
+  },
+  "fargateVcpuHourX86": 0.0465600000,
+  "fargateGbHourX86": 0.0051100000,
+  "fargateVcpuHourArm": 0.0372500000,
+  "fargateGbHourArm": 0.0040900000,
+  "albHour": 0.0225000000,
+  "albLcuHour": 0.0080000000,
+  "nlbHour": 0.0225000000,
+  "nlbLcuHour": 0.0060000000,
+  "gwlbHour": 0.0125000000,
+  "gwlbLcuHour": 0.0040000000,
+  "s3StandardGbMonth": 0.0250000000,
+  "s3StandardIaGbMonth": 0.0138000000,
+  "cloudFrontGbTransfer": 0.1200000000,
+  "lambdaPerRequest": 2.000E-7,
+  "lambdaGbSecond": 0.0000166667,
+  "lambdaPerRequestArm": 2.000E-7,
+  "lambdaGbSecondArm": 0.0000133334,
+  "dynamoDbPerReadUnit": 1.355E-7,
+  "dynamoDbPerWriteUnit": 6.800E-7,
+  "dynamoDbStorageGbMonth": 0.2707500000,
+  "dynamoDbProvisionedReadUnitHour": 0.0001409800,
+  "dynamoDbProvisionedWriteUnitHour": 0.0007049000,
+  "dataTransferOutGb": 0.1260000000,
+  "vpcEndpointHour": 0.0130000000,
+  "vpcEndpointGbProcessed": 0.0100000000,
+  "transitGatewayHour": 0.0700000000,
+  "transitGatewayGbProcessed": 0.0200000000,
+  "vpcPeeringGbProcessed": 0.0100000000,
+  "apiGatewayHttpPerRequest": 0.0000012300,
+  "sqsPerRequest": 4.000E-7,
+  "snsPerRequest": 5.000E-7,
+  "efsStandardGbMonth": 0.3300000000,
+  "openSearchInstanceHour": {
+    "t3.small.search": 0.0560000000,
+    "m6g.large.search": 0.1560000000
+  },
+  "openSearchGp3GbMonth": 0.1391000000,
+  "secretsManagerPerSecretMonth": 0.4000000000,
+  "secretsManagerPerApiRequest": 0.0000050000,
+  "eventBridgePerEvent": 0.0000010000,
+  "stepFunctionsPerStateTransition": 0.0000271000,
+  "cloudWatchLogsIngestGb": 0.7600000000,
+  "cloudWatchLogsStorageGbMonth": 0.0314000000,
+  "cloudWatchAlarmMonth": 0.1000000000,
+  "kinesisShardHour": 0.0185000000,
+  "kinesisPutPayloadUnit": 2.04E-8,
+  "wafWebAclMonth": 5.0000000000,
+  "wafRuleMonth": 1.0000000000,
+  "wafPerRequest": 6.000E-7,
+  "sesPerRecipient": 0.0001000000,
+  "sesAttachmentGb": 0.1200000000,
+  "eksClusterHour": {
+    "standard": 0.1000000000,
+    "extended": 0.5000000000,
+    "provisioned_xl": 1.6500000000,
+    "provisioned_2xl": 3.4000000000,
+    "provisioned_4xl": 6.9000000000,
+    "provisioned_8xl": 13.9000000000
+  },
+  "ecrStorageGbMonth": {
+    "standard": 0.1000000000,
+    "archive": 0.1000000000
+  },
+  "cloudTrailPaidEvent": 0.0000200000,
+  "cloudTrailDataEvent": 0.0000010000,
+  "cloudTrailQueryGb": 0.0050000000,
+  "glueDpuHour": {
+    "standard": 0.4400000000,
+    "glue_6": 0.3080000000,
+    "flex": 0.2900000000,
+    "flex_glue_6": 0.2030000000
+  },
+  "glueCrawlerDpuHour": 0.4400000000,
+  "athenaScannedTb": 5.0000000000,
+  "redshiftRa3LargeHour": {
+    "ra3.large": 0.6390000000,
+    "ra3.xlplus": 1.2780000000,
+    "dc2.large": 0.3000000000
+  },
+  "redshiftStorageGbMonth": 0.0261000000,
+  "mskBrokerHour": {
+    "m5.large": 0.2580000000,
+    "t3.small": 0.0569000000,
+    "m7g.large": 0.2508000000
+  },
+  "mskStorageGbMonth": 0.1140000000,
+  "appSyncGraphqlRequest": 0.0000040000,
+  "appSyncRealtimeMinute": 8.00E-8,
+  "cognitoMau": {
+    "lite": 0.0055000000,
+    "essentials": 0.0150000000,
+    "plus": 0.0200000000
+  },
+  "bedrockNovaLiteInput1kTokens": {
+    "nova_micro": 0.0000410000,
+    "nova_lite": 0.0000710000,
+    "nova_pro": 0.0009500000
+  },
+  "bedrockNovaLiteOutput1kTokens": {
+    "nova_micro": 0.0001640000,
+    "nova_lite": 0.0002840000,
+    "nova_pro": 0.0038000000
+  },
+  "sageMakerMlM5LargeHour": {
+    "ml.g4dn.xlarge": 0.9060000000,
+    "ml.m5.large": 0.1420000000,
+    "ml.c6g.large": 0.0924000000
+  },
+  "ssmAdvancedParameterMonth": {
+    "standard": 0,
+    "advanced": 0.0000700000
+  },
+  "ssmParameterApiRequest": 0.0000050000,
+  "kmsKeyMonth": 1.0000000000,
+  "kmsRequest": {
+    "symmetric": 0.0000030000,
+    "asymmetric": 0.0000150000,
+    "rsa_2048": 0.0000030000
+  },
+  "cloudHsmHour": {
+    "hsm1": 1.5400000000,
+    "hsm2m": 1.5400000000
+  },
+  "backupWarmStorageGbMonth": {
+    "ebs_lagv": 0.0575000000,
+    "efs_lagv": 0.0633000000,
+    "dynamodb_lagv": 0.1245000000
+  },
+  "route53HostedZoneMonth": 0.5000000000,
+  "route53PerQuery": 4.000E-7
+}

@@ -1,0 +1,371 @@
+{
+  "meta": {
+    "title": "AWS CostPilot",
+    "description": "Estimate your service's monthly AWS bill in seconds"
+  },
+  "common": {
+    "brand": "AWS CostPilot",
+    "language": "Language",
+    "korean": "한국어",
+    "english": "English"
+  },
+  "landing": {
+    "nav": {
+      "features": "Features",
+      "personas": "Who it's for",
+      "login": "Log in",
+      "cta": "Calculate for free"
+    },
+    "hero": {
+      "eyebrow": "AWS Cost Platform",
+      "titleLine1": "Know your AWS bill",
+      "titleLine2": "before you build it.",
+      "body": "Assemble resources yourself or just describe your service — get a monthly estimate in both USD and KRW instantly. Not sure what to build? AI recommends an architecture and ways to cut costs.",
+      "ctaPrimary": "Start calculating for free →",
+      "ctaSecondary": "See how it works",
+      "statResources": "AWS resources supported",
+      "statRegions": "regions supported",
+      "statCurrency": "computed together"
+    },
+    "optimization": {
+      "eyebrow": "Cost Optimization · AI Explanations",
+      "title": "The calculation is where it starts, not ends.",
+      "body": "Get practical savings suggestions like switching to Graviton or downsizing RDS/Redis, plus a plain-language explanation of why your bill looks the way it does.",
+      "optimizationLabel": "💡 Cost optimization suggestion",
+      "optimizationExample": "“Switching ECS to Graviton (ARM) could save about 20% per month”",
+      "explanationLabel": "🤖 AI explanation",
+      "explanationExample": "“RDS dominates your bill because of the instance tier, not storage”"
+    },
+    "personas": {
+      "eyebrow": "Who it's for",
+      "title": "Built for these exact situations.",
+      "items": [
+        {
+          "title": "Solo side-project builders",
+          "body": "For developers who want to know their monthly bill before they ever deploy.",
+          "points": [
+            "Assemble resources yourself and see the cost instantly",
+            "Calculate right away — no signup required",
+            "Save the result as a card image or PDF to share"
+          ]
+        },
+        {
+          "title": "Teams whose traffic just started growing",
+          "body": "For engineers sketching out the next-stage architecture and hunting for wasted spend.",
+          "points": [
+            "Describe your service and let AI recommend an architecture",
+            "Get concrete savings ideas like Graviton or downsizing",
+            "Save calculation history and compare over time"
+          ]
+        },
+        {
+          "title": "PMs and finance folks, not engineers",
+          "body": "For people who don't know the AWS console but still need to know what this quote costs.",
+          "points": [
+            "Understand why a cost came out this way, in plain language",
+            "See the number in KRW directly — no manual conversion",
+            "Export to PDF and attach it straight to a report"
+          ]
+        }
+      ]
+    },
+    "finalCta": {
+      "title": "See it for yourself, right now.",
+      "body": "You can calculate without creating an account.",
+      "cta": "Start calculating for free →"
+    },
+    "footer": {
+      "tagline": "Estimates your monthly AWS bill from your service details and system diagram.",
+      "calculator": "Calculator",
+      "login": "Log in",
+      "copyright": "© 2026 AWS CostPilot"
+    }
+  },
+  "modeShowcase": {
+    "eyebrow": "How to use",
+    "title": "However you get there, the result is the same report.",
+    "resultLabel": "Estimated monthly cost",
+    "moreResources": "+37 more",
+    "wizard": {
+      "eyebrow": "Guided form",
+      "titleLine1": "Answer a few questions,",
+      "titleLine2": "and the math is done.",
+      "body": "Fill in basics like monthly users and request volume, then pick and configure resources like ECS or RDS one by one — the per-resource price and total are computed instantly.",
+      "step1": "STEP 1 · Service info",
+      "step2": "STEP 2 · Pick resources",
+      "namePlaceholder": "e.g. My Awesome API",
+      "usersValue": "10,000 / month",
+      "requestsValue": "100 requests",
+      "addResource": "+ Add resource"
+    },
+    "dragBuilder": {
+      "eyebrow": "Drag-and-drop diagram",
+      "titleLine1": "Snap it together like LEGO,",
+      "titleLine2": "and it's your bill.",
+      "body": "Place real AWS resources like ECS, RDS, Redis, and ALB onto the canvas — per-resource pricing and the total are computed accurately on the spot.",
+      "diagramTitle": "System diagram",
+      "ecs": "Container",
+      "rds": "Database",
+      "redis": "Cache",
+      "alb": "Load balancer"
+    },
+    "aiRecommend": {
+      "eyebrow": "AI recommendation",
+      "titleLine1": "Not sure what to pick?",
+      "titleLine2": "Just describe it.",
+      "body": "Describe how many users and what kind of service in a sentence or two, and AI puts together an architecture that fits your traffic and stage.",
+      "descriptionLabel": "Service description",
+      "descriptionExample": "“A commerce API server for about 50k monthly users”",
+      "recommendationTitle": "Recommended: Growth-stage architecture",
+      "recommendationDetail": "2× ECS + RDS + Redis cache + ALB + CloudFront"
+    }
+  },
+  "calculatorPage": {
+    "brand": "AWS CostPilot",
+    "title": "AWS Cost Calculator",
+    "subtitle": "Estimates your monthly cost from your service details and system diagram."
+  },
+  "authStatus": {
+    "credits": "{name} · {balance} credits",
+    "mypage": "My Page",
+    "logout": "Log out",
+    "login": "Log in / Sign up",
+    "users": "Users"
+  },
+  "calculator": {
+    "tabs": {
+      "wizard": "Guided form",
+      "visual": "Draw a diagram",
+      "recommend": "AI recommendation"
+    },
+    "catalogError": "Couldn't load the resource catalog.",
+    "projectFields": {
+      "serviceName": "Service name",
+      "namePlaceholder": "e.g. My Awesome API",
+      "monthlyUsers": "Monthly users",
+      "requestsPerUser": "Average requests per user",
+      "busyTraffic": "Traffic level at your busiest time",
+      "busyTrafficShort": "Busiest-time traffic",
+      "trafficSimilar": "About the same as usual",
+      "trafficTwoToThree": "2–3× more than usual",
+      "trafficFivePlus": "5×+ more than usual",
+      "trafficUnknown": "Not sure",
+      "serviceStage": "Service stage",
+      "serviceStageShort": "Stage",
+      "stageToy": "Personal / toy project",
+      "stageMvp": "MVP / early-stage service",
+      "stageProduction": "Production service",
+      "stageCritical": "Downtime-sensitive service",
+      "region": "AWS Region"
+    },
+    "stepProject": {
+      "stepLabel": "Step 1",
+      "title": "Service info",
+      "subtitle": "Enter the name, scale, and region of the service you want to calculate.",
+      "switchToRecommend": "Get an AI recommendation from this info →",
+      "next": "Next"
+    },
+    "stepArchitecture": {
+      "title": "STEP 2. Architecture",
+      "subtitle": "Pick and configure the AWS resources you'll use. You can add several of the same kind (e.g. an RDS primary + replica).",
+      "advancedShow": "More advanced options ({items}) ▼",
+      "advancedHide": "Hide advanced options ▲",
+      "warnBoth": "Enter a service name and add at least one resource (you can enter the name back in the previous step).",
+      "warnName": "The service name is empty — go back to the previous step and enter it.",
+      "warnResources": "Add at least one resource.",
+      "back": "Back",
+      "calculate": "Calculate cost"
+    },
+    "stepResult": {
+      "calculatingTitle": "Calculating your cost",
+      "calculatingBody": "Estimating your monthly cost from the resources you selected.",
+      "analyzingTitle": "AI is analyzing cost optimizations",
+      "analyzingBody": "AI is looking for practical savings based on your current configuration.",
+      "backToStart": "Back",
+      "optimizeFailed": "Couldn't get a cost optimization suggestion.",
+      "pdfFailed": "PDF generation failed. Please try again.",
+      "shareTitle": "AWS cost calculation result",
+      "shareUnsupported": "Sharing isn't supported in this browser — please download it and send it instead.",
+      "shareFailed": "Something went wrong while sharing. Please download it and send it instead.",
+      "title": "STEP 3. Result",
+      "exporting": "Exporting...",
+      "exportPdf": "Export as PDF",
+      "estimatedCost": "Estimated monthly cost",
+      "total": "Total",
+      "aiRecommendedConfig": "🤖 AI-recommended configuration",
+      "additionalRecommendations": "Additional recommendations",
+      "diagramTitle": "System diagram",
+      "aiOptimization": "💡 AI cost optimization",
+      "ruleBased": "Rule-based",
+      "optimizeIntro": "Let AI analyze your configuration for practical ways to cut costs.",
+      "analyzing": "Analyzing...",
+      "optimizeCta": "Get an AI cost optimization (uses 1 credit)",
+      "currentCost": "Current estimated cost",
+      "optimizedCost": "Optimized estimate",
+      "estimatedSavings": "Estimated savings",
+      "perMonth": "/ month",
+      "noSavingsFound": "No clear savings found in the current configuration.",
+      "reOptimize": "Get another recommendation (uses 1 credit)",
+      "editConfig": "Edit configuration",
+      "restart": "Start over"
+    },
+    "visualBuilder": {
+      "groupVpc": "Network boundary",
+      "groupAz": "Availability zone",
+      "groupPublicSubnet": "Internet-facing segment",
+      "groupPrivateSubnet": "Application/DB segment",
+      "groupCompute": "Compute execution area",
+      "resourceSetting": "Resource settings",
+      "selectToEdit": "Select a resource to change its settings.",
+      "palette": "Palette",
+      "components": "System components",
+      "loadingCatalog": "Loading catalog...",
+      "areas": "Areas",
+      "resources": "Resources",
+      "searchResources": "Search resources",
+      "noResults": "No results found.",
+      "visualBuilderLabel": "Visual Builder",
+      "diagramTitle": "System diagram",
+      "requestBasis": "Based on {count} requests / month",
+      "areasCount": "{count} area(s)",
+      "resourcesCount": "{count} resource(s)",
+      "connectionsCount": "{count} connection(s)",
+      "resetView": "Reset view",
+      "removeLine": "Remove line",
+      "emptyCanvas": "Place a VPC, Subnet, or Compute Group area first, then drop resources inside it.",
+      "canvasHint": "Select a resource node to change its settings. Click two resource icons in sequence to connect them.",
+      "editDetails": "Edit details",
+      "calculate": "Calculate cost"
+    },
+    "recommendPanel": {
+      "nameRequired": "Please enter a service name.",
+      "invalidScale": "Please enter a valid service scale.",
+      "fetchFailed": "Couldn't get a recommendation.",
+      "pdfFailed": "PDF generation failed. Please try again.",
+      "shareUnsupported": "Sharing isn't supported in this browser. Please download it and send it instead.",
+      "shareFailed": "Something went wrong while sharing. Please download it and send it instead.",
+      "shareTitle": "AWS architecture recommendation",
+      "eyebrow": "AI Architecture",
+      "title": "Get an architecture recommendation from your service info",
+      "subtitle": "Enter your service's scale and get a suitable AWS configuration plus its estimated monthly cost.",
+      "serviceName": "Service name",
+      "serviceType": "Service type",
+      "typeWebApi": "Web / API service",
+      "typeMobileApp": "Mobile app backend",
+      "typeStaticSite": "Static website",
+      "typeBatchWorker": "Batch / worker service",
+      "typeInternalAdmin": "Internal admin tool",
+      "describeService": "Service description",
+      "describeServicePlaceholder": "e.g. A commerce web/API service. Needs user accounts and login, product image uploads, and async order notifications.",
+      "submit": "Get a recommendation (uses 1 credit)",
+      "loading": "Calculating...",
+      "analyzingTitle": "AI is analyzing your configuration",
+      "analyzingBody": "Recommending an AWS configuration and computing its cost from your service description and scale.",
+      "editConfig": "Edit this configuration",
+      "exporting": "Exporting...",
+      "exportPdf": "Export as PDF",
+      "estimatedCost": "Estimated monthly cost",
+      "additionalRecommendations": "Additional recommendations",
+      "total": "Total",
+      "back": "Build the architecture myself",
+      "describeServiceDefault": "Needs a custom domain and login. It's mostly a REST API service, using a relational database early on.",
+      "pdfEyebrow": "AWS Architecture Recommendation",
+      "pdfFooter": "Recommended by aws-cost-calculator · actual billed amount may differ."
+    },
+    "sharePdfModal": {
+      "title": "Result card",
+      "close": "Close",
+      "share": "Share",
+      "sharing": "Preparing to share...",
+      "shareUnsupported": "Share sheet isn't supported in this browser — please download it and send it directly.",
+      "download": "Download PDF"
+    },
+    "errors": {
+      "emptyName": "The service name is empty. Go back to the previous step and enter it.",
+      "unknown": "An unknown error occurred."
+    },
+    "shareCard": {
+      "title": "AWS Cost Calculator",
+      "defaultProjectName": "My Service",
+      "estimatedCost": "Estimated monthly cost",
+      "total": "Total",
+      "aiRecommendedConfig": "🤖 AI-recommended configuration",
+      "diagramTitle": "System diagram",
+      "optimizeSavings": "💡 Optimizing could save about {amount}/month",
+      "footer": "Calculated with aws-cost-calculator · actual billed amount may differ"
+    },
+    "diagramSnapshotView": {
+      "defaultTitle": "System diagram",
+      "summary": "{groups} area(s) · {resources} resource(s)"
+    },
+    "recommendedDiagram": {
+      "pricedSeparately": "Priced separately",
+      "title": "Recommended system diagram",
+      "readOnly": "Read-only"
+    },
+    "resourceListSection": {
+      "add": "+ Add",
+      "notUsed": "Not used",
+      "delete": "Delete"
+    }
+  },
+  "auth": {
+    "loginModal": {
+      "brand": "AWS CostPilot",
+      "loginTitle": "Log in",
+      "signupTitle": "Sign up",
+      "subtitle": "Log in to calculate costs and get AI architecture recommendations.",
+      "email": "Email",
+      "nickname": "Nickname",
+      "nicknamePlaceholder": "Display name",
+      "password": "Password",
+      "passwordPlaceholder": "8+ characters",
+      "processing": "Processing...",
+      "login": "Log in",
+      "signup": "Sign up",
+      "noAccount": "No account? Sign up",
+      "haveAccount": "Already have an account? Log in",
+      "continueWithGoogle": "Continue with Google",
+      "failed": "Login failed."
+    },
+    "authCallback": {
+      "processing": "Logging you in..."
+    },
+    "loginPage": {
+      "browseWithoutLogin": "Browse without logging in"
+    },
+    "creditModal": {
+      "title": "You're out of credits",
+      "subtitle": "Calculating costs and getting AI recommendations each cost 1 credit.",
+      "body": "During the current beta, credits are granted on request instead of by payment. Check your remaining credits and usage history on My Page.",
+      "close": "Close",
+      "mypage": "My Page"
+    }
+  },
+  "mypage": {
+    "title": "My Page",
+    "backToCalculator": "Back to calculator",
+    "loading": "Loading...",
+    "loginRequired": "You need to log in.",
+    "loginCta": "Log in",
+    "accountInfo": "Account info",
+    "nickname": "Nickname",
+    "email": "Email",
+    "credits": "Credits",
+    "history": "Calculation history",
+    "noHistory": "You haven't calculated any projects yet.",
+    "reportFailed": "Couldn't load the report.",
+    "pdfFailed": "PDF generation failed. Please try again.",
+    "shareTitle": "AWS cost calculation result",
+    "shareUnsupported": "Sharing isn't supported in this browser — please download it and send it instead.",
+    "shareFailed": "Something went wrong while sharing. Please download it and send it instead.",
+    "reportLabel": "Report",
+    "exporting": "Exporting...",
+    "exportPdf": "Export as PDF",
+    "estimatedCost": "Estimated monthly cost",
+    "total": "Total",
+    "aiRecommendedConfig": "🤖 AI-recommended configuration",
+    "additionalRecommendations": "Additional recommendations",
+    "diagramTitle": "System diagram"
+  }
+}

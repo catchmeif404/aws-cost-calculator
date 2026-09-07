@@ -1,0 +1,14 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: aws_calculator
+      POSTGRES_USER: aws_calculator
+      POSTGRES_PASSWORD: aws_calculator
+    ports:
+      - "5432:5432"
+    volumes:
+      - aws_calculator_pgdata:/var/lib/postgresql/data
+
+volumes:
+  aws_calculator_pgdata:

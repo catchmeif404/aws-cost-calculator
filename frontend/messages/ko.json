@@ -1,0 +1,371 @@
+{
+  "meta": {
+    "title": "AWS CostPilot",
+    "description": "내 서비스의 예상 AWS 월 비용을 빠르게 계산해보세요"
+  },
+  "common": {
+    "brand": "AWS CostPilot",
+    "language": "언어",
+    "korean": "한국어",
+    "english": "English"
+  },
+  "landing": {
+    "nav": {
+      "features": "기능",
+      "personas": "누구를 위한 건지",
+      "login": "로그인",
+      "cta": "무료로 계산하기"
+    },
+    "hero": {
+      "eyebrow": "AWS Cost Platform",
+      "titleLine1": "AWS 비용, 만들기 전에",
+      "titleLine2": "확인하세요.",
+      "body": "리소스를 직접 조립하거나 서비스 설명만 입력하면, 월 예상 비용을 달러와 원화로 바로 계산합니다. 구성이 애매하면 AI가 아키텍처를 추천하고, 비용을 줄일 방법도 알려드려요.",
+      "ctaPrimary": "무료로 계산 시작 →",
+      "ctaSecondary": "어떻게 동작하는지 보기",
+      "statResources": "지원 AWS 리소스",
+      "statRegions": "지원 리전",
+      "statCurrency": "동시 계산"
+    },
+    "optimization": {
+      "eyebrow": "비용 최적화 · AI 설명",
+      "title": "계산은 끝이 아니라 시작입니다.",
+      "body": "Graviton 전환, RDS·Redis 다운사이징 같은 실질적인 절감 방법을 제안받고, 왜 이런 비용이 나왔는지 평문으로 설명도 받아보세요.",
+      "optimizationLabel": "💡 비용 최적화 제안",
+      "optimizationExample": "“ECS를 Graviton(ARM)으로 전환하면 월 약 20% 절감 가능”",
+      "explanationLabel": "🤖 AI 설명",
+      "explanationExample": "“RDS 비중이 큰 이유는 스토리지보다 인스턴스 등급 때문이에요”"
+    },
+    "personas": {
+      "eyebrow": "누구를 위한 건지",
+      "title": "이런 상황이라면 딱입니다.",
+      "items": [
+        {
+          "title": "혼자 만드는 사이드 프로젝트",
+          "body": "배포하기 전에 한 달에 얼마 나올지부터 알고 싶은 개발자에게.",
+          "points": [
+            "리소스를 직접 조립해서 그 자리에서 비용 확인",
+            "회원가입 없이도 바로 계산 가능",
+            "결과를 카드 이미지·PDF로 저장해서 공유"
+          ]
+        },
+        {
+          "title": "이제 막 트래픽이 붙기 시작한 팀",
+          "body": "다음 단계 아키텍처를 그려보고, 새는 비용을 찾아야 하는 엔지니어에게.",
+          "points": [
+            "서비스 설명만 입력하면 AI가 아키텍처 추천",
+            "Graviton 전환, 다운사이징 같은 절감 방법 제안",
+            "계산 기록을 저장해두고 시점별로 비교"
+          ]
+        },
+        {
+          "title": "엔지니어가 아닌 기획·재무 담당자",
+          "body": "AWS 콘솔은 몰라도 이번 견적이 얼마인지는 알아야 하는 사람에게.",
+          "points": [
+            "평문 설명으로 왜 이 비용이 나왔는지 이해",
+            "원화(KRW)로 바로 확인, 달러 환산 계산 불필요",
+            "PDF로 내보내 그대로 보고서에 첨부"
+          ]
+        }
+      ]
+    },
+    "finalCta": {
+      "title": "지금 바로 확인해보세요.",
+      "body": "회원가입 없이도 계산해볼 수 있어요.",
+      "cta": "무료로 계산 시작 →"
+    },
+    "footer": {
+      "tagline": "서비스 정보와 시스템 구성도를 바탕으로 월 예상 AWS 비용을 계산합니다.",
+      "calculator": "계산기",
+      "login": "로그인",
+      "copyright": "© 2026 AWS CostPilot"
+    }
+  },
+  "modeShowcase": {
+    "eyebrow": "How to use",
+    "title": "어떻게 입력하든, 결과는 같은 리포트로.",
+    "resultLabel": "예상 월 비용",
+    "moreResources": "+37개 더",
+    "wizard": {
+      "eyebrow": "정보 입력",
+      "titleLine1": "질문에 답하면,",
+      "titleLine2": "계산까지 끝.",
+      "body": "월 사용자 수, 요청량 같은 기본 정보를 입력한 다음 ECS, RDS 같은 리소스를 하나씩 선택하고 설정하면, 리소스별 단가부터 합계까지 바로 계산돼요.",
+      "step1": "STEP 1 · 서비스 정보",
+      "step2": "STEP 2 · 리소스 선택",
+      "namePlaceholder": "예: My Awesome API",
+      "usersValue": "월 10,000명",
+      "requestsValue": "요청 100회",
+      "addResource": "+ 리소스 추가"
+    },
+    "dragBuilder": {
+      "eyebrow": "구성도 그리기",
+      "titleLine1": "레고처럼 조립하고,",
+      "titleLine2": "그대로 청구서로.",
+      "body": "ECS, RDS, Redis, ALB 같은 실제 AWS 리소스를 캔버스에 하나씩 배치하면, 리소스별 단가부터 합계까지 그 자리에서 정확하게 계산돼요.",
+      "diagramTitle": "시스템 구성도",
+      "ecs": "컨테이너",
+      "rds": "데이터베이스",
+      "redis": "캐시",
+      "alb": "로드밸런서"
+    },
+    "aiRecommend": {
+      "eyebrow": "AI 추천",
+      "titleLine1": "뭘 골라야 할지 모르겠다면,",
+      "titleLine2": "설명만 하세요.",
+      "body": "몇 명이 쓸지, 어떤 서비스인지 몇 문장으로 설명하면 AI가 트래픽과 단계에 맞는 아키텍처를 구성합니다.",
+      "descriptionLabel": "서비스 설명",
+      "descriptionExample": "“월 사용자 5만 명 규모 커머스 API 서버”",
+      "recommendationTitle": "추천 구성: 성장기 아키텍처",
+      "recommendationDetail": "ECS 2대 + RDS + Redis 캐시 + ALB + CloudFront"
+    }
+  },
+  "calculatorPage": {
+    "brand": "AWS CostPilot",
+    "title": "AWS 비용 계산기",
+    "subtitle": "서비스 정보와 시스템 구성도를 바탕으로 월 예상 비용을 계산합니다."
+  },
+  "authStatus": {
+    "credits": "{name}님 · 크레딧 {balance}",
+    "mypage": "마이페이지",
+    "logout": "로그아웃",
+    "login": "로그인 / 회원가입",
+    "users": "회원관리"
+  },
+  "calculator": {
+    "tabs": {
+      "wizard": "정보 입력",
+      "visual": "구성도 그리기",
+      "recommend": "AI 추천"
+    },
+    "catalogError": "리소스 카탈로그를 가져오지 못했어요.",
+    "projectFields": {
+      "serviceName": "서비스 이름",
+      "namePlaceholder": "예: My Awesome API",
+      "monthlyUsers": "월간 사용자 수",
+      "requestsPerUser": "사용자당 평균 요청 수",
+      "busyTraffic": "가장 바쁜 시간대의 트래픽 수준",
+      "busyTrafficShort": "가장 바쁜 시간대",
+      "trafficSimilar": "평소와 비슷함",
+      "trafficTwoToThree": "평소보다 2~3배 많음",
+      "trafficFivePlus": "평소보다 5배 이상 많음",
+      "trafficUnknown": "잘 모르겠음",
+      "serviceStage": "서비스 운영 단계",
+      "serviceStageShort": "운영 단계",
+      "stageToy": "개인/토이 프로젝트",
+      "stageMvp": "MVP/초기 서비스",
+      "stageProduction": "실제 운영 서비스",
+      "stageCritical": "장애에 민감한 서비스",
+      "region": "AWS Region"
+    },
+    "stepProject": {
+      "stepLabel": "Step 1",
+      "title": "서비스 정보",
+      "subtitle": "계산할 서비스의 이름, 규모, 리전을 입력하세요.",
+      "switchToRecommend": "서비스 정보로 구성 추천받기 →",
+      "next": "다음"
+    },
+    "stepArchitecture": {
+      "title": "STEP 2. 아키텍처 구성",
+      "subtitle": "사용할 AWS 리소스를 선택하고 설정하세요. 같은 종류를 여러 개(예: RDS 프라이머리 + 리플리카) 추가할 수 있어요.",
+      "advancedShow": "고급 옵션 더보기 ({items}) ▼",
+      "advancedHide": "고급 옵션 접기 ▲",
+      "warnBoth": "서비스 이름을 입력하고, 리소스를 최소 1개 이상 추가해주세요 (이전 단계에서 이름을 입력할 수 있어요).",
+      "warnName": "서비스 이름이 비어있어요 — 이전 단계로 돌아가서 입력해주세요.",
+      "warnResources": "리소스를 최소 1개 이상 추가해주세요.",
+      "back": "이전",
+      "calculate": "비용 계산하기"
+    },
+    "stepResult": {
+      "calculatingTitle": "비용을 계산하고 있습니다",
+      "calculatingBody": "선택한 리소스로 월 예상 비용을 계산하고 있어요.",
+      "analyzingTitle": "AI가 비용 최적화를 분석 중입니다",
+      "analyzingBody": "현재 구성을 바탕으로 실질적인 비용 절감 방법을 AI가 찾고 있어요.",
+      "backToStart": "이전으로",
+      "optimizeFailed": "비용 최적화 추천을 가져오지 못했어요.",
+      "pdfFailed": "PDF 생성에 실패했어요. 다시 시도해주세요.",
+      "shareTitle": "AWS 비용 계산 결과",
+      "shareUnsupported": "이 브라우저에서는 공유가 지원되지 않아요 — 다운로드해서 보내주세요.",
+      "shareFailed": "공유 중 문제가 발생했어요. 다운로드해서 보내주세요.",
+      "title": "STEP 3. 계산 결과",
+      "exporting": "내보내는 중...",
+      "exportPdf": "PDF로 내보내기",
+      "estimatedCost": "예상 월 비용",
+      "total": "Total",
+      "aiRecommendedConfig": "🤖 AI 추천 구성",
+      "additionalRecommendations": "추가 권장 구성",
+      "diagramTitle": "드래그 구성 시스템 구성도",
+      "aiOptimization": "💡 AI 비용 최적화",
+      "ruleBased": "규칙 기반",
+      "optimizeIntro": "현재 구성을 AI가 분석해서 실질적인 비용 절감 방법을 제안해줘요.",
+      "analyzing": "분석 중...",
+      "optimizeCta": "AI 비용 최적화 추천받기 (크레딧 1개 사용)",
+      "currentCost": "현재 예상 비용",
+      "optimizedCost": "최적화 가능 예상",
+      "estimatedSavings": "예상 절감",
+      "perMonth": "/ 월",
+      "noSavingsFound": "지금 구성에서는 뚜렷한 절감 포인트를 찾지 못했어요.",
+      "reOptimize": "다시 추천받기 (크레딧 1개 사용)",
+      "editConfig": "구성 수정",
+      "restart": "새로 계산하기"
+    },
+    "visualBuilder": {
+      "groupVpc": "네트워크 경계",
+      "groupAz": "가용 영역",
+      "groupPublicSubnet": "인터넷 진입 구간",
+      "groupPrivateSubnet": "애플리케이션/DB 구간",
+      "groupCompute": "컴퓨트 실행 영역",
+      "resourceSetting": "리소스 설정",
+      "selectToEdit": "설정을 바꿀 리소스를 선택하세요.",
+      "palette": "Palette",
+      "components": "시스템 구성 요소",
+      "loadingCatalog": "카탈로그 불러오는 중...",
+      "areas": "영역",
+      "resources": "리소스",
+      "searchResources": "리소스 검색",
+      "noResults": "검색 결과가 없습니다.",
+      "visualBuilderLabel": "Visual Builder",
+      "diagramTitle": "시스템 구성도",
+      "requestBasis": "월 {count}건 요청 기준",
+      "areasCount": "영역 {count}개",
+      "resourcesCount": "리소스 {count}개",
+      "connectionsCount": "연결 {count}개",
+      "resetView": "보기 초기화",
+      "removeLine": "선 지우기",
+      "emptyCanvas": "VPC, Subnet, Compute Group 영역을 먼저 놓고 그 안에 리소스를 배치하세요.",
+      "canvasHint": "리소스 노드를 선택하면 세부 설정을 바꿀 수 있습니다. 리소스 아이콘 두 개를 차례로 클릭하면 선이 추가됩니다.",
+      "editDetails": "세부 설정 편집",
+      "calculate": "비용 계산하기"
+    },
+    "recommendPanel": {
+      "nameRequired": "서비스 이름을 입력해주세요.",
+      "invalidScale": "서비스 규모를 올바르게 입력해주세요.",
+      "fetchFailed": "추천을 가져오지 못했어요.",
+      "pdfFailed": "PDF 생성에 실패했어요. 다시 시도해주세요.",
+      "shareUnsupported": "이 브라우저에서는 공유가 지원되지 않아요. 다운로드해서 보내주세요.",
+      "shareFailed": "공유 중 문제가 발생했어요. 다운로드해서 보내주세요.",
+      "shareTitle": "AWS 구성 추천",
+      "eyebrow": "AI Architecture",
+      "title": "서비스 정보로 구성 추천받기",
+      "subtitle": "서비스 규모를 입력하면 적절한 AWS 구성과 예상 월 비용을 계산합니다.",
+      "serviceName": "서비스 이름",
+      "serviceType": "서비스 유형",
+      "typeWebApi": "웹/API 서비스",
+      "typeMobileApp": "모바일 앱 백엔드",
+      "typeStaticSite": "정적 웹사이트",
+      "typeBatchWorker": "배치/워커 서비스",
+      "typeInternalAdmin": "사내 관리자 도구",
+      "describeService": "서비스 설명",
+      "describeServicePlaceholder": "예: 커머스 웹/API 서비스입니다. 사용자 도메인과 로그인, 상품 이미지 업로드, 주문 알림 비동기 처리가 필요합니다.",
+      "submit": "구성 추천받기 (크레딧 1개 사용)",
+      "loading": "계산 중...",
+      "analyzingTitle": "AI가 구성을 분석 중입니다",
+      "analyzingBody": "서비스 설명과 규모를 바탕으로 AWS 구성을 추천하고 비용을 계산하고 있습니다.",
+      "editConfig": "이 구성 편집하기",
+      "exporting": "내보내는 중...",
+      "exportPdf": "PDF 내보내기",
+      "estimatedCost": "예상 월 비용",
+      "additionalRecommendations": "추가 권장 구성",
+      "total": "Total",
+      "back": "아키텍처 직접 구성하기",
+      "describeServiceDefault": "사용자 도메인이 필요하고 로그인 기능이 있습니다. REST API 중심의 서비스이며, 초기에는 관계형 데이터베이스를 사용합니다.",
+      "pdfEyebrow": "AWS 구성 추천",
+      "pdfFooter": "aws-cost-calculator로 추천한 구성입니다. 실제 청구 금액과 다를 수 있습니다."
+    },
+    "sharePdfModal": {
+      "title": "결과 카드",
+      "close": "닫기",
+      "share": "공유하기",
+      "sharing": "공유 준비 중...",
+      "shareUnsupported": "이 브라우저에서는 공유 시트를 지원하지 않아요 — 다운로드해서 직접 보내주세요.",
+      "download": "PDF 다운로드"
+    },
+    "errors": {
+      "emptyName": "서비스 이름이 비어있어요. 이전 단계로 돌아가서 입력해주세요.",
+      "unknown": "알 수 없는 오류가 발생했어요."
+    },
+    "shareCard": {
+      "title": "AWS 비용 계산기",
+      "defaultProjectName": "내 서비스",
+      "estimatedCost": "예상 월 비용",
+      "total": "Total",
+      "aiRecommendedConfig": "🤖 AI 추천 구성",
+      "diagramTitle": "드래그 구성 시스템 구성도",
+      "optimizeSavings": "💡 최적화하면 약 {amount}/월 절감 가능",
+      "footer": "aws-cost-calculator로 계산한 결과예요 · 실제 청구 금액과 다를 수 있어요"
+    },
+    "diagramSnapshotView": {
+      "defaultTitle": "시스템 구성도",
+      "summary": "영역 {groups}개 · 리소스 {resources}개"
+    },
+    "recommendedDiagram": {
+      "pricedSeparately": "비용 별도 산정",
+      "title": "추천 시스템 구성도",
+      "readOnly": "읽기 전용"
+    },
+    "resourceListSection": {
+      "add": "+ 추가",
+      "notUsed": "사용하지 않음",
+      "delete": "삭제"
+    }
+  },
+  "auth": {
+    "loginModal": {
+      "brand": "AWS CostPilot",
+      "loginTitle": "로그인",
+      "signupTitle": "회원가입",
+      "subtitle": "비용 계산과 AI 구성 추천은 로그인 후 사용할 수 있습니다.",
+      "email": "이메일",
+      "nickname": "닉네임",
+      "nicknamePlaceholder": "표시 이름",
+      "password": "비밀번호",
+      "passwordPlaceholder": "8자 이상",
+      "processing": "처리 중...",
+      "login": "로그인",
+      "signup": "회원가입",
+      "noAccount": "계정이 없으면 회원가입",
+      "haveAccount": "이미 계정이 있으면 로그인",
+      "continueWithGoogle": "Google로 계속하기",
+      "failed": "로그인 처리에 실패했어요."
+    },
+    "authCallback": {
+      "processing": "로그인 처리 중..."
+    },
+    "loginPage": {
+      "browseWithoutLogin": "로그인 없이 둘러보기"
+    },
+    "creditModal": {
+      "title": "크레딧이 부족합니다",
+      "subtitle": "비용 계산과 AI 구성 추천에는 1크레딧이 필요합니다.",
+      "body": "현재 베타 기간에는 결제 대신 요청 기반으로 크레딧을 지급합니다. 마이페이지에서 잔여 크레딧과 사용 내역을 확인할 수 있습니다.",
+      "close": "닫기",
+      "mypage": "마이페이지"
+    }
+  },
+  "mypage": {
+    "title": "마이페이지",
+    "backToCalculator": "계산기로 돌아가기",
+    "loading": "불러오는 중...",
+    "loginRequired": "로그인이 필요합니다.",
+    "loginCta": "로그인하기",
+    "accountInfo": "계정 정보",
+    "nickname": "닉네임",
+    "email": "이메일",
+    "credits": "크레딧",
+    "history": "계산 기록",
+    "noHistory": "아직 계산한 프로젝트가 없어요.",
+    "reportFailed": "리포트를 가져오지 못했어요.",
+    "pdfFailed": "PDF 생성에 실패했어요. 다시 시도해주세요.",
+    "shareTitle": "AWS 비용 계산 결과",
+    "shareUnsupported": "이 브라우저에서는 공유가 지원되지 않아요 — 다운로드해서 보내주세요.",
+    "shareFailed": "공유 중 문제가 발생했어요. 다운로드해서 보내주세요.",
+    "reportLabel": "Report",
+    "exporting": "내보내는 중...",
+    "exportPdf": "PDF로 내보내기",
+    "estimatedCost": "예상 월 비용",
+    "total": "Total",
+    "aiRecommendedConfig": "🤖 AI 추천 구성",
+    "additionalRecommendations": "추가 권장 구성",
+    "diagramTitle": "시스템 구성도"
+  }
+}
