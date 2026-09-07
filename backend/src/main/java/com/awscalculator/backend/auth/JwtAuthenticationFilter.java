@@ -1,5 +1,6 @@
 package com.awscalculator.backend.auth;
 
+import com.awscalculator.backend.metrics.UserActivityRecorder;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,15 +15,13 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-// No DB lookup here on purpose — every request just gets a userId principal from a valid JWT,
-// keeping auth cheap. Controllers that need the actual User row (e.g. /api/users/me) fetch it
-// themselves via UserService, matching the existing thin-controller/service pattern.
 @Component
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtTokenProvider jwtTokenProvider;
     private final UserRepository userRepository;
+    private final UserActivityRecorder userActivityRecorder;
 
     @Override
     protected void doFilterInternal(
@@ -41,6 +40,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                     userId, null, List.of(new SimpleGrantedAuthority("ROLE_" + role.name()))
             );
             SecurityContextHolder.getContext().setAuthentication(authentication);
+            userActivityRecorder.recordActive(userId);
         }
 
         filterChain.doFilter(request, response);

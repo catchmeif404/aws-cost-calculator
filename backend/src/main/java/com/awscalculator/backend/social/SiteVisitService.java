@@ -1,6 +1,8 @@
 package com.awscalculator.backend.social;
 
-import java.net.URI;
+import com.awscalculator.backend.metrics.SiteVisitEvent;
+import com.awscalculator.backend.metrics.SiteVisitEventRepository;
+import java.time.Instant;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class SiteVisitService {
 
-    private final SiteVisitRepository siteVisitRepository;
+    private final SiteVisitEventRepository siteVisitEventRepository;
 
     @Transactional
     public void recordVisit(String hostname) {
@@ -17,18 +19,7 @@ public class SiteVisitService {
         if (key == null) {
             return;
         }
-        SiteVisit visit = siteVisitRepository.findById(key).orElseGet(() -> new SiteVisit(key));
-        visit.increment();
-        siteVisitRepository.save(visit);
-    }
-
-    @Transactional(readOnly = true)
-    public long getVisitCount(String url) {
-        String key = normalizeUrl(url);
-        if (key == null) {
-            return 0;
-        }
-        return siteVisitRepository.findById(key).map(SiteVisit::getVisitCount).orElse(0L);
+        siteVisitEventRepository.save(new SiteVisitEvent(key, Instant.now()));
     }
 
     private String normalize(String hostname) {
@@ -36,19 +27,5 @@ public class SiteVisitService {
             return null;
         }
         return hostname.trim().toLowerCase();
-    }
-
-    // Promotion profiles store a full product URL (e.g. https://aws-costpilot.trade/), but visits
-    // are pinged and keyed by bare hostname — parse it the same way here so lookups match.
-    private String normalizeUrl(String url) {
-        if (url == null || url.isBlank()) {
-            return null;
-        }
-        try {
-            String host = URI.create(url.trim()).getHost();
-            return normalize(host);
-        } catch (IllegalArgumentException e) {
-            return null;
-        }
     }
 }

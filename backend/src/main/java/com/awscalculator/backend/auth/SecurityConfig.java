@@ -1,5 +1,6 @@
 package com.awscalculator.backend.auth;
 
+import com.awscalculator.backend.metrics.InternalApiKeyFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,6 +23,7 @@ public class SecurityConfig {
     private final OAuth2AuthenticationSuccessHandler oAuth2AuthenticationSuccessHandler;
     private final OAuth2AuthenticationFailureHandler oAuth2AuthenticationFailureHandler;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
+    private final InternalApiKeyFilter internalApiKeyFilter;
     private final RestAuthenticationEntryPoint restAuthenticationEntryPoint;
     private final RestAccessDeniedHandler restAccessDeniedHandler;
 
@@ -51,6 +53,9 @@ public class SecurityConfig {
                                 "/api/projects/**",
                                 "/api/architecture-recommendations"
                         ).authenticated()
+                        // /api/internal/** falls under this permitAll too - it's gated earlier in
+                        // the filter chain by InternalApiKeyFilter's shared-secret header check,
+                        // not by a Spring Security role.
                         .requestMatchers("/api/**").permitAll()
                         .requestMatchers("/oauth2/**", "/login/**").permitAll()
                         .anyRequest().permitAll()
@@ -65,6 +70,7 @@ public class SecurityConfig {
                         .accessDeniedHandler(restAccessDeniedHandler)
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(internalApiKeyFilter, UsernamePasswordAuthenticationFilter.class)
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .formLogin(AbstractHttpConfigurer::disable);
 
