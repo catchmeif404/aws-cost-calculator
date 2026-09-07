@@ -10,7 +10,7 @@ jobs:
       - name: Install Railway CLI
         run: npm install -g @railway/cli
 
-      - name: Fetch latest deployment logs (even if failed)
+      - name: Status
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-        run: railway logs --service aws-cost-calculator --deployment --latest --lines 300 || true
+        run: railway status --json || true
