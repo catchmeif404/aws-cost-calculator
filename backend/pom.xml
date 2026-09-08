@@ -15,7 +15,10 @@
 	<description/>
 	<url/>
 	<licenses>
-		<license/>
+		<license>
+			<name>MIT License</name>
+			<url>https://github.com/catchmeif404/aws-cost-calculator/blob/main/LICENSE</url>
+		</license>
 	</licenses>
 	<developers>
 		<developer/>
