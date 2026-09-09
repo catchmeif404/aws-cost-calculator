@@ -14,16 +14,16 @@ export default function CreditRequiredModal({ open, onClose }: Props) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm">
-      <div className="w-full max-w-md overflow-hidden rounded-lg border border-slate-200 bg-white shadow-2xl dark:border-slate-800 dark:bg-slate-950">
-        <div className="bg-[#232f3e] px-6 py-5 text-white">
-          <div className="text-xs font-semibold uppercase text-[#ff9900]">Credits</div>
+      <div className="w-full max-w-md overflow-hidden rounded-sm border border-slate-200 bg-white shadow-2xl dark:border-slate-800 dark:bg-white">
+        <div className="bg-stone-100 px-6 py-5 text-stone-900">
+          <div className="text-xs font-semibold uppercase text-[#a32b2b]">Credits</div>
           <h2 className="mt-1 text-lg font-semibold">{t("title")}</h2>
-          <p className="mt-1 text-sm text-slate-300">
+          <p className="mt-1 text-sm text-stone-700">
             {t("subtitle")}
           </p>
         </div>
 
-        <div className="grid gap-4 p-6 text-sm text-slate-600 dark:text-slate-300">
+        <div className="grid gap-4 p-6 text-sm text-slate-600 dark:text-stone-700">
           <p className="leading-6">
             {t("body")}
           </p>
@@ -31,14 +31,14 @@ export default function CreditRequiredModal({ open, onClose }: Props) {
             <button
               type="button"
               onClick={onClose}
-              className="rounded border border-slate-300 px-4 py-2.5 font-semibold text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-900"
+              className="rounded border border-slate-300 px-4 py-2.5 font-semibold text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-stone-800 dark:hover:bg-stone-100"
             >
               {t("close")}
             </button>
             <Link
               href="/mypage"
               onClick={onClose}
-              className="rounded bg-[#ff9900] px-4 py-2.5 text-center font-semibold text-[#161e2d] hover:bg-[#f2a100]"
+              className="rounded bg-[#a32b2b] px-4 py-2.5 text-center font-semibold text-[#ffffff] hover:bg-[#842020]"
             >
               {t("mypage")}
             </Link>

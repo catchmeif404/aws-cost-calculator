@@ -721,14 +721,14 @@ export default function VisualArchitectureBuilder({
   }
 
   return (
-    <div className="grid items-start gap-6 lg:grid-cols-[280px_minmax(0,1fr)]">
-      <aside className="flex max-h-[860px] min-h-0 flex-col gap-4 overflow-hidden rounded-lg border p-4 shadow-sm border-slate-800 bg-slate-950 lg:sticky lg:top-6 lg:h-[calc(100vh-3rem)] lg:max-h-none">
+    <div className="grid min-w-0 grid-cols-[minmax(0,1fr)] items-start gap-6 lg:grid-cols-[280px_minmax(0,1fr)] [&>div]:min-w-0">
+      <aside className="flex max-h-[860px] min-h-0 flex-col gap-4 overflow-hidden rounded-lg border p-4 shadow-sm border-slate-800 bg-white lg:sticky lg:top-6 lg:h-[calc(100vh-3rem)] lg:max-h-none">
         <div className="shrink-0">
-          <div className="-mx-4 -mt-4 mb-4 bg-[#232f3e] px-4 py-3">
+          <div className="-mx-4 -mt-4 mb-4 bg-stone-100 px-4 py-3">
             <div className="text-xs font-semibold uppercase text-[#ff9900]">{t("palette")}</div>
             <h2 className="mt-1 text-sm font-semibold text-white">{t("components")}</h2>
             {resourceCatalog.length === 0 && !catalogError && (
-              <p className="mt-1 text-xs text-slate-300">{t("loadingCatalog")}</p>
+              <p className="mt-1 text-xs text-stone-700">{t("loadingCatalog")}</p>
             )}
           </div>
           {catalogError && (
@@ -762,13 +762,13 @@ export default function VisualArchitectureBuilder({
         <div className="flex min-h-0 flex-1 flex-col">
           <div className="flex shrink-0 items-center justify-between gap-2">
             <h2 className="text-sm font-semibold text-slate-50">{t("resources")}</h2>
-            <span className="text-xs text-zinc-400">{filteredResourcePalette.length}/{resourceCatalog.length}</span>
+            <span className="text-xs text-stone-600">{filteredResourcePalette.length}/{resourceCatalog.length}</span>
           </div>
           <input
             value={resourceSearch}
             onChange={(event) => setResourceSearch(event.target.value)}
             placeholder={t("searchResources")}
-            className="mt-3 w-full shrink-0 rounded-md border px-3 py-2 text-sm outline-none transition border-slate-800 bg-slate-900 text-zinc-50 placeholder:text-zinc-500 focus:border-[#ff9900]"
+            className="mt-3 w-full shrink-0 rounded-md border px-3 py-2 text-sm outline-none transition border-slate-800 bg-stone-100 text-zinc-50 placeholder:text-zinc-500 focus:border-[#ff9900]"
           />
           {/* Mobile keeps a fixed max-height (no reliable viewport-relative flex context without
               `lg:sticky`'s h-[calc]); desktop instead fills the remaining column space via flex-1,
@@ -782,7 +782,7 @@ export default function VisualArchitectureBuilder({
                 draggable
                 onClick={() => addResource(option)}
                 onDragStart={(event) => startDrag(event, "resource", option.kind)}
-                className="flex items-center gap-3 rounded-md border p-2 text-left transition border-slate-800 bg-slate-900 hover:border-[#ff9900]"
+                className="flex items-center gap-3 rounded-md border p-2 text-left transition border-slate-800 bg-stone-100 hover:border-[#ff9900]"
               >
                 <span
                   className={`${paletteShortNameClass} ${categoryBg(option.category)} ${categoryText(option.category)} ${categoryBorder(option.category)}`}
@@ -791,12 +791,12 @@ export default function VisualArchitectureBuilder({
                 </span>
                 <span className="min-w-0 flex-1">
                   <span className="block truncate text-sm font-medium text-zinc-50">{option.title}</span>
-                  <span className="block truncate text-xs text-zinc-400">{option.description}</span>
+                  <span className="block truncate text-xs text-stone-600">{option.description}</span>
                 </span>
               </button>
             ))}
             {filteredResourcePalette.length === 0 && (
-              <div className="rounded-md border border-dashed px-3 py-6 text-center text-sm border-slate-800 text-zinc-400">
+              <div className="rounded-md border border-dashed px-3 py-6 text-center text-sm border-slate-800 text-stone-600">
                 {t("noResults")}
               </div>
             )}
@@ -805,23 +805,23 @@ export default function VisualArchitectureBuilder({
       </aside>
 
       <section className="flex flex-col gap-5">
-        <div className="rounded-lg border p-5 shadow-sm border-slate-800 bg-slate-950">
+        <div className="rounded-lg border p-5 shadow-sm border-slate-800 bg-white">
           <div className="grid gap-4 md:grid-cols-2">
             <label className="flex flex-col gap-2">
-              <span className="text-sm font-medium text-zinc-300">{tFields("serviceName")}</span>
+              <span className="text-sm font-medium text-stone-700">{tFields("serviceName")}</span>
               <input
                 value={form.projectName}
                 onChange={(event) => onChange({ ...form, projectName: event.target.value })}
                 placeholder={tFields("namePlaceholder")}
-                className="rounded-lg border px-3 py-2 text-sm outline-none focus:border-zinc-900 border-zinc-700 bg-zinc-900 text-zinc-50"
+                className="rounded-lg border px-3 py-2 text-sm outline-none focus:border-zinc-900 border-zinc-700 bg-white text-zinc-50"
               />
             </label>
             <label className="flex flex-col gap-2">
-              <span className="text-sm font-medium text-zinc-300">{tFields("region")}</span>
+              <span className="text-sm font-medium text-stone-700">{tFields("region")}</span>
               <select
                 value={form.region}
                 onChange={(event) => onChange({ ...form, region: event.target.value })}
-                className="rounded-lg border px-3 py-2 text-sm outline-none focus:border-zinc-900 border-zinc-700 bg-zinc-900 text-zinc-50"
+                className="rounded-lg border px-3 py-2 text-sm outline-none focus:border-zinc-900 border-zinc-700 bg-white text-zinc-50"
               >
                 {REGIONS.map((region) => (
                   <option key={region.code} value={region.code}>
@@ -834,31 +834,31 @@ export default function VisualArchitectureBuilder({
 
           <div className="mt-4 grid gap-4 md:grid-cols-4">
             <label className="flex flex-col gap-2">
-              <span className="text-sm font-medium text-zinc-300">{tFields("monthlyUsers")}</span>
+              <span className="text-sm font-medium text-stone-700">{tFields("monthlyUsers")}</span>
               <input
                 type="number"
                 min={0}
                 value={form.monthlyUsers}
                 onChange={(event) => onChange({ ...form, monthlyUsers: Number(event.target.value) })}
-                className="rounded-lg border px-3 py-2 text-sm outline-none focus:border-zinc-900 border-zinc-700 bg-zinc-900 text-zinc-50"
+                className="rounded-lg border px-3 py-2 text-sm outline-none focus:border-zinc-900 border-zinc-700 bg-white text-zinc-50"
               />
             </label>
             <label className="flex flex-col gap-2">
-              <span className="text-sm font-medium text-zinc-300">{tFields("requestsPerUser")}</span>
+              <span className="text-sm font-medium text-stone-700">{tFields("requestsPerUser")}</span>
               <input
                 type="number"
                 min={0}
                 value={form.requestsPerUser}
                 onChange={(event) => onChange({ ...form, requestsPerUser: Number(event.target.value) })}
-                className="rounded-lg border px-3 py-2 text-sm outline-none focus:border-zinc-900 border-zinc-700 bg-zinc-900 text-zinc-50"
+                className="rounded-lg border px-3 py-2 text-sm outline-none focus:border-zinc-900 border-zinc-700 bg-white text-zinc-50"
               />
             </label>
             <label className="flex flex-col gap-2">
-              <span className="text-sm font-medium text-zinc-300">{tFields("busyTrafficShort")}</span>
+              <span className="text-sm font-medium text-stone-700">{tFields("busyTrafficShort")}</span>
               <select
                 value={form.busyTrafficLevel}
                 onChange={(event) => onChange({ ...form, busyTrafficLevel: event.target.value })}
-                className="rounded-lg border px-3 py-2 text-sm outline-none focus:border-zinc-900 border-zinc-700 bg-zinc-900 text-zinc-50"
+                className="rounded-lg border px-3 py-2 text-sm outline-none focus:border-zinc-900 border-zinc-700 bg-white text-zinc-50"
               >
                 <option value="similar">{tFields("trafficSimilar")}</option>
                 <option value="two_to_three_times">{tFields("trafficTwoToThree")}</option>
@@ -867,11 +867,11 @@ export default function VisualArchitectureBuilder({
               </select>
             </label>
             <label className="flex flex-col gap-2">
-              <span className="text-sm font-medium text-zinc-300">{tFields("serviceStageShort")}</span>
+              <span className="text-sm font-medium text-stone-700">{tFields("serviceStageShort")}</span>
               <select
                 value={form.serviceStage}
                 onChange={(event) => onChange({ ...form, serviceStage: event.target.value })}
-                className="rounded-lg border px-3 py-2 text-sm outline-none focus:border-zinc-900 border-zinc-700 bg-zinc-900 text-zinc-50"
+                className="rounded-lg border px-3 py-2 text-sm outline-none focus:border-zinc-900 border-zinc-700 bg-white text-zinc-50"
               >
                 <option value="toy">{tFields("stageToy")}</option>
                 <option value="mvp">{tFields("stageMvp")}</option>
@@ -1076,7 +1076,7 @@ export default function VisualArchitectureBuilder({
           <button
             type="button"
             onClick={onEditDetails}
-            className="rounded border px-5 py-3 text-sm font-semibold hover:border-[#ff9900] border-slate-700 text-slate-300 hover:bg-slate-900"
+            className="rounded border px-5 py-3 text-sm font-semibold hover:border-[#ff9900] border-slate-700 text-stone-700 hover:bg-stone-100"
           >
             {t("editDetails")}
           </button>
@@ -1084,7 +1084,7 @@ export default function VisualArchitectureBuilder({
             type="button"
             onClick={() => onCalculate(form)}
             disabled={!canCalculate}
-            className="rounded bg-[#ff9900] px-5 py-3 text-sm font-semibold text-[#161e2d] hover:bg-[#f2a100] disabled:cursor-not-allowed disabled:opacity-40"
+            className="rounded bg-[#a32b2b] px-5 py-3 text-sm font-semibold text-white hover:bg-[#f2a100] disabled:cursor-not-allowed disabled:opacity-40"
           >
             {t("calculate")}
           </button>

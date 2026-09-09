@@ -19,7 +19,7 @@ export default function AuthCallbackPage() {
   }, [router]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center text-sm text-zinc-500 dark:text-zinc-400">
+    <div className="flex min-h-screen items-center justify-center text-sm text-zinc-500 dark:text-stone-600">
       {t("processing")}
     </div>
   );

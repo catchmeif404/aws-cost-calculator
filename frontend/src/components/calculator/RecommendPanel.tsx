@@ -214,39 +214,39 @@ export default function RecommendPanel({ onBack, onRequireAuth, onApply, resourc
         </div>
       )}
 
-      <div className="rounded-lg border p-5 shadow-sm border-slate-800 bg-slate-950">
-        <div className="text-xs font-semibold uppercase text-[#ff9900]">{t("eyebrow")}</div>
-        <h2 className="mt-1 text-lg font-semibold text-slate-50">
+      <div className="rounded-sm border p-5 shadow-sm border-slate-800 bg-white">
+        <div className="text-xs font-semibold uppercase text-[#a32b2b]">{t("eyebrow")}</div>
+        <h2 className="mt-1 text-lg font-semibold text-stone-900">
           {t("title")}
         </h2>
-        <p className="mt-1 text-sm text-slate-400">
+        <p className="mt-1 text-sm text-stone-600">
           {t("subtitle")}
         </p>
       </div>
 
       <form
         onSubmit={handleSubmit}
-        className="grid gap-4 rounded-lg border p-5 shadow-sm border-slate-800 bg-slate-950 lg:grid-cols-2"
+        className="grid gap-4 rounded-sm border p-5 shadow-sm border-slate-800 bg-white lg:grid-cols-2"
       >
         <div className="grid gap-4">
           <label className="flex flex-col gap-2">
-            <span className="text-sm font-medium text-zinc-300">{t("serviceName")}</span>
+            <span className="text-sm font-medium text-stone-700">{t("serviceName")}</span>
             <input
               value={serviceName}
               onChange={(e) => setServiceName(e.target.value)}
-              className="w-full rounded-lg border px-4 py-2.5 outline-none focus:border-zinc-900 border-zinc-700 bg-zinc-900 text-zinc-50"
+              className="w-full rounded-sm border px-4 py-2.5 outline-none focus:border-zinc-900 border-zinc-700 bg-white text-zinc-50"
               placeholder="My Awesome API"
             />
           </label>
 
           <label className="flex flex-col gap-2">
-            <span className="text-sm font-medium text-zinc-300">
+            <span className="text-sm font-medium text-stone-700">
               {tFields("busyTraffic")}
             </span>
             <select
               value={busyTrafficLevel}
               onChange={(e) => setBusyTrafficLevel(e.target.value)}
-              className="rounded-lg border px-4 py-2.5 text-sm outline-none focus:border-zinc-900 border-zinc-700 bg-zinc-900 text-zinc-50"
+              className="rounded-sm border px-4 py-2.5 text-sm outline-none focus:border-zinc-900 border-zinc-700 bg-white text-zinc-50"
             >
               <option value="similar">{tFields("trafficSimilar")}</option>
               <option value="two_to_three_times">{tFields("trafficTwoToThree")}</option>
@@ -258,34 +258,34 @@ export default function RecommendPanel({ onBack, onRequireAuth, onApply, resourc
 
         <div className="grid gap-3 sm:grid-cols-2">
           <label className="flex flex-col gap-2">
-            <span className="text-sm font-medium text-zinc-300">{tFields("monthlyUsers")}</span>
+            <span className="text-sm font-medium text-stone-700">{tFields("monthlyUsers")}</span>
             <input
               type="number"
               min={0}
               value={monthlyUsers}
               onChange={(e) => setMonthlyUsers(e.target.value)}
-              className="w-full rounded-lg border px-4 py-2.5 outline-none focus:border-zinc-900 border-zinc-700 bg-zinc-900 text-zinc-50"
+              className="w-full rounded-sm border px-4 py-2.5 outline-none focus:border-zinc-900 border-zinc-700 bg-white text-zinc-50"
             />
           </label>
           <label className="flex flex-col gap-2">
-            <span className="text-sm font-medium text-zinc-300">{tFields("requestsPerUser")}</span>
+            <span className="text-sm font-medium text-stone-700">{tFields("requestsPerUser")}</span>
             <input
               type="number"
               min={0}
               value={requestsPerUser}
               onChange={(e) => setRequestsPerUser(e.target.value)}
-              className="w-full rounded-lg border px-4 py-2.5 outline-none focus:border-zinc-900 border-zinc-700 bg-zinc-900 text-zinc-50"
+              className="w-full rounded-sm border px-4 py-2.5 outline-none focus:border-zinc-900 border-zinc-700 bg-white text-zinc-50"
             />
           </label>
         </div>
 
         <div className="grid gap-3 sm:grid-cols-2">
           <label className="flex flex-col gap-2">
-            <span className="text-sm font-medium text-zinc-300">{t("serviceType")}</span>
+            <span className="text-sm font-medium text-stone-700">{t("serviceType")}</span>
             <select
               value={serviceType}
               onChange={(e) => setServiceType(e.target.value)}
-              className="rounded-lg border px-4 py-2.5 text-sm outline-none focus:border-zinc-900 border-zinc-700 bg-zinc-900 text-zinc-50"
+              className="rounded-sm border px-4 py-2.5 text-sm outline-none focus:border-zinc-900 border-zinc-700 bg-white text-zinc-50"
             >
               <option value="web_api">{t("typeWebApi")}</option>
               <option value="mobile_app">{t("typeMobileApp")}</option>
@@ -295,11 +295,11 @@ export default function RecommendPanel({ onBack, onRequireAuth, onApply, resourc
             </select>
           </label>
           <label className="flex flex-col gap-2">
-            <span className="text-sm font-medium text-zinc-300">{tFields("serviceStage")}</span>
+            <span className="text-sm font-medium text-stone-700">{tFields("serviceStage")}</span>
             <select
               value={serviceStage}
               onChange={(e) => setServiceStage(e.target.value)}
-              className="rounded-lg border px-4 py-2.5 text-sm outline-none focus:border-zinc-900 border-zinc-700 bg-zinc-900 text-zinc-50"
+              className="rounded-sm border px-4 py-2.5 text-sm outline-none focus:border-zinc-900 border-zinc-700 bg-white text-zinc-50"
             >
               <option value="toy">{tFields("stageToy")}</option>
               <option value="mvp">{tFields("stageMvp")}</option>
@@ -310,23 +310,23 @@ export default function RecommendPanel({ onBack, onRequireAuth, onApply, resourc
         </div>
 
         <label className="flex flex-col gap-2 lg:row-span-2">
-          <span className="text-sm font-medium text-zinc-300">{t("describeService")}</span>
+          <span className="text-sm font-medium text-stone-700">{t("describeService")}</span>
           <textarea
             value={serviceDescription}
             onChange={(e) => setServiceDescription(e.target.value)}
             rows={7}
-            className="min-h-[188px] w-full resize-y rounded-lg border px-4 py-3 text-sm outline-none focus:border-zinc-900 border-zinc-700 bg-zinc-900 text-zinc-50"
+            className="min-h-[188px] w-full resize-y rounded-sm border px-4 py-3 text-sm outline-none focus:border-zinc-900 border-zinc-700 bg-white text-zinc-50"
             placeholder={t("describeServicePlaceholder")}
           />
         </label>
 
         <div className="grid gap-3 sm:grid-cols-2">
           <label className="flex flex-col gap-2">
-            <span className="text-sm font-medium text-zinc-300">{tFields("region")}</span>
+            <span className="text-sm font-medium text-stone-700">{tFields("region")}</span>
             <select
               value={region}
               onChange={(e) => setRegion(e.target.value)}
-              className="rounded-lg border px-4 py-2.5 text-sm outline-none focus:border-zinc-900 border-zinc-700 bg-zinc-900 text-zinc-50"
+              className="rounded-sm border px-4 py-2.5 text-sm outline-none focus:border-zinc-900 border-zinc-700 bg-white text-zinc-50"
             >
               {REGIONS.map((r) => (
                 <option key={r.code} value={r.code}>
@@ -340,7 +340,7 @@ export default function RecommendPanel({ onBack, onRequireAuth, onApply, resourc
         <button
           type="submit"
           disabled={loading}
-          className="rounded bg-[#ff9900] px-5 py-2.5 font-semibold text-[#161e2d] transition-colors hover:bg-[#f2a100] disabled:opacity-50 lg:col-span-2"
+          className="rounded bg-[#a32b2b] px-5 py-2.5 font-semibold text-[#ffffff] transition-colors hover:bg-[#842020] disabled:opacity-50 lg:col-span-2"
         >
           {loading ? t("loading") : t("submit")}
         </button>
@@ -355,14 +355,14 @@ export default function RecommendPanel({ onBack, onRequireAuth, onApply, resourc
       {(loading || result) && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/45 p-4 backdrop-blur-sm">
           {loading && (
-            <div className="w-full max-w-sm overflow-hidden rounded-lg border text-center shadow-2xl border-slate-800 bg-slate-950">
-              <div className="bg-[#232f3e] px-6 py-4 text-left text-white">
-                <div className="text-xs font-semibold uppercase text-[#ff9900]">Analyzing</div>
+            <div className="w-full max-w-sm overflow-hidden rounded-sm border text-center shadow-2xl border-slate-800 bg-white">
+              <div className="bg-stone-100 px-6 py-4 text-left text-stone-900">
+                <div className="text-xs font-semibold uppercase text-[#a32b2b]">Analyzing</div>
                 <h3 className="mt-1 text-base font-semibold">{t("analyzingTitle")}</h3>
               </div>
               <div className="p-6">
-                <div className="mx-auto h-10 w-10 animate-spin rounded-full border-2 border-t-[#ff9900] border-slate-800" />
-                <p className="mt-4 text-sm text-slate-400">
+                <div className="mx-auto h-10 w-10 animate-spin rounded-full border-2 border-t-[#a32b2b] border-slate-800" />
+                <p className="mt-4 text-sm text-stone-600">
                   {t("analyzingBody")}
                 </p>
               </div>
@@ -370,20 +370,20 @@ export default function RecommendPanel({ onBack, onRequireAuth, onApply, resourc
           )}
 
           {!loading && result && (
-            <div className="max-h-[90vh] w-full max-w-5xl overflow-hidden rounded-lg border shadow-2xl border-slate-800 bg-slate-950">
-              <div className="flex flex-wrap items-start justify-between gap-4 border-b border-white/10 bg-[#232f3e] p-5 text-white">
+            <div className="max-h-[90vh] w-full max-w-5xl overflow-hidden rounded-sm border shadow-2xl border-slate-800 bg-white">
+              <div className="flex flex-wrap items-start justify-between gap-4 border-b border-stone-300 bg-stone-100 p-5 text-stone-900">
                 <div className="min-w-0">
-                  <div className="text-xs font-semibold uppercase text-[#ff9900]">
+                  <div className="text-xs font-semibold uppercase text-[#a32b2b]">
                     {result.analysisMode}
                   </div>
                   <h3 className="mt-1 text-lg font-semibold">{result.tierName}</h3>
-                  <p className="mt-1 text-sm text-slate-300">{result.description}</p>
+                  <p className="mt-1 text-sm text-stone-700">{result.description}</p>
                 </div>
                 <div className="flex shrink-0 items-start gap-2">
                   <button
                     type="button"
                     onClick={handleApply}
-                    className="rounded bg-[#ff9900] px-3 py-2 text-xs font-semibold text-[#161e2d] hover:bg-[#f2a100]"
+                    className="rounded bg-[#a32b2b] px-3 py-2 text-xs font-semibold text-[#ffffff] hover:bg-[#842020]"
                   >
                     {t("editConfig")}
                   </button>
@@ -391,14 +391,14 @@ export default function RecommendPanel({ onBack, onRequireAuth, onApply, resourc
                     type="button"
                     onClick={handleOpenPdfModal}
                     disabled={generatingPdf}
-                    className="rounded border border-white/20 px-3 py-2 text-xs font-semibold text-slate-100 hover:bg-white/10"
+                    className="rounded border border-stone-300 px-3 py-2 text-xs font-semibold text-stone-900 hover:bg-stone-200"
                   >
                     {generatingPdf ? t("exporting") : t("exportPdf")}
                   </button>
                   <button
                     type="button"
                     onClick={() => setResult(null)}
-                    className="grid h-8 w-8 place-items-center rounded border border-white/20 text-sm text-slate-200 hover:bg-white/10 hover:text-white"
+                    className="grid h-8 w-8 place-items-center rounded border border-stone-300 text-sm text-stone-800 hover:bg-stone-200 hover:text-stone-900"
                   >
                     x
                   </button>
@@ -416,15 +416,15 @@ export default function RecommendPanel({ onBack, onRequireAuth, onApply, resourc
                     "report" content that gets captured as the PDF/share card (ShareCard.tsx), so
                     it must always look like what gets exported: white background, black price card. */}
                 <div className="flex flex-col gap-4 rounded-2xl border border-zinc-200 bg-white p-6 text-zinc-900">
-                  <div className="flex flex-col items-center gap-1 rounded-2xl py-10 bg-zinc-900 text-white">
-                    <span className="text-sm text-zinc-400">{t("estimatedCost")}</span>
+                  <div className="flex flex-col items-center gap-1 rounded-2xl py-10 bg-white text-stone-900">
+                    <span className="text-sm text-stone-600">{t("estimatedCost")}</span>
                     <span className="text-4xl font-bold">{formatUsd(result.totalMonthlyCostUsd)}</span>
-                    <span className="text-zinc-400">
+                    <span className="text-stone-600">
                       {formatKrw(result.totalMonthlyCostKrw)}
                     </span>
                   </div>
 
-                  <div className="rounded-lg p-3 text-sm bg-zinc-50 text-zinc-600">
+                  <div className="rounded-sm p-3 text-sm bg-zinc-50 text-zinc-600">
                     {result.recommendationReason}
                   </div>
 
@@ -435,7 +435,7 @@ export default function RecommendPanel({ onBack, onRequireAuth, onApply, resourc
                   />
 
                   {result.additionalRecommendations.length > 0 && (
-                    <div className="rounded-lg border p-3 text-sm border-amber-200 bg-amber-50 text-amber-900">
+                    <div className="rounded-sm border p-3 text-sm border-amber-200 bg-amber-50 text-amber-900">
                       <div className="font-medium">{t("additionalRecommendations")}</div>
                       <ul className="mt-2 list-disc space-y-1 pl-5">
                         {result.additionalRecommendations.map((item, index) => (
@@ -469,7 +469,7 @@ export default function RecommendPanel({ onBack, onRequireAuth, onApply, resourc
 
       <button
         onClick={onBack}
-        className="self-start text-sm font-medium underline-offset-2 hover:underline text-zinc-400"
+        className="self-start text-sm font-medium underline-offset-2 hover:underline text-stone-600"
       >
         {t("back")}
       </button>

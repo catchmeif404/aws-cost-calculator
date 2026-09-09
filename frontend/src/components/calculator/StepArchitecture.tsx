@@ -19,14 +19,14 @@ interface Props {
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <label className="flex items-center justify-between gap-4 text-sm">
-      <span className="text-zinc-400">{label}</span>
+      <span className="text-stone-600">{label}</span>
       {children}
     </label>
   );
 }
 
 const selectClass =
-  "rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-50 outline-none focus:border-zinc-900";
+  "rounded-sm border border-zinc-700 bg-white px-3 py-1.5 text-sm text-zinc-50 outline-none focus:border-zinc-900";
 const numberClass = selectClass + " w-24";
 
 // The primary/advanced split is a UX choice (keep the wizard's first screen short), not a
@@ -64,7 +64,7 @@ export default function StepArchitecture({ form, resourceCatalog, catalogError, 
         createDefault={() => createResourceInstance(catalogItem)}
         renderFields={(item, onItemChange) =>
           catalogItem.fields.length === 0 ? (
-            <p className="text-sm text-zinc-400">{catalogItem.description}</p>
+            <p className="text-sm text-stone-600">{catalogItem.description}</p>
           ) : (
             <>
               {catalogItem.fields.map((field) => (
@@ -86,11 +86,14 @@ export default function StepArchitecture({ form, resourceCatalog, catalogError, 
 
   return (
     <div className="flex flex-col gap-6">
-      <div>
-        <h2 className="text-lg font-semibold text-zinc-50">
+      <div className="border-b border-stone-300 pb-5">
+        <div className="flex items-center justify-between gap-4">
+          <h2 className="text-xl font-semibold tracking-normal text-stone-900">
           {t("title")}
-        </h2>
-        <p className="mt-1 text-sm text-zinc-400">
+          </h2>
+          <span className="text-xs text-stone-9000">02 / 03</span>
+        </div>
+        <p className="mt-2 text-sm text-stone-600">
           {t("subtitle")}
         </p>
       </div>
@@ -105,7 +108,7 @@ export default function StepArchitecture({ form, resourceCatalog, catalogError, 
         <button
           type="button"
           onClick={() => setShowAdvanced(!showAdvanced)}
-          className="self-start text-sm font-medium underline-offset-2 hover:underline text-zinc-400"
+          className="self-start text-sm font-medium text-stone-600 underline-offset-2 hover:text-stone-800 hover:underline"
         >
           {showAdvanced
             ? t("advancedHide")
@@ -116,7 +119,7 @@ export default function StepArchitecture({ form, resourceCatalog, catalogError, 
       {showAdvanced && advancedItems.map(renderResourceSection)}
 
       {!canProceed && (
-        <p className="text-sm text-amber-400">
+        <p className="border-l-2 border-amber-400/70 bg-amber-400/5 px-3 py-2 text-sm text-amber-300">
           {!hasName && !hasResources && t("warnBoth")}
           {!hasName && hasResources && t("warnName")}
           {hasName && !hasResources && t("warnResources")}
@@ -126,14 +129,14 @@ export default function StepArchitecture({ form, resourceCatalog, catalogError, 
       <div className="mt-2 flex gap-3">
         <button
           onClick={onBack}
-          className="rounded-full border px-5 py-3 font-medium transition-colors border-zinc-700 text-zinc-300 hover:bg-zinc-900"
+          className="rounded-sm border border-stone-300 px-5 py-3 font-medium text-stone-700 transition-colors hover:bg-stone-100"
         >
           {t("back")}
         </button>
         <button
           onClick={onNext}
           disabled={!canProceed}
-          className="flex-1 rounded-full px-5 py-3 font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-40 bg-[#ff9900] text-[#161e2d] hover:bg-[#f2a100]"
+          className="flex-1 rounded-sm bg-[#a32b2b] px-5 py-3 font-medium text-[#ffffff] transition-colors hover:bg-[#842020] disabled:cursor-not-allowed disabled:opacity-40"
         >
           {t("calculate")}
         </button>

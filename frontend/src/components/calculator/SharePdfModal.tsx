@@ -43,7 +43,7 @@ export default function SharePdfModal({
       `}</style>
 
       <div
-        className="flex max-h-[90vh] w-full max-w-md flex-col overflow-hidden rounded-2xl shadow-xl bg-zinc-900"
+        className="flex max-h-[90vh] w-full max-w-md flex-col overflow-hidden rounded-2xl shadow-xl bg-white"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between border-b px-5 py-3 border-zinc-800">
@@ -51,7 +51,7 @@ export default function SharePdfModal({
           <button
             onClick={onClose}
             aria-label={t("close")}
-            className="rounded-full p-1 text-zinc-400 hover:bg-zinc-800 hover:text-zinc-200"
+            className="rounded-full p-1 text-stone-600 hover:bg-zinc-800 hover:text-stone-800"
           >
             ✕
           </button>
@@ -61,7 +61,7 @@ export default function SharePdfModal({
           <img
             src={imageUrl}
             alt={fileName}
-            className="mx-auto w-full max-w-sm rounded-lg shadow-lg"
+            className="mx-auto w-full max-w-sm rounded-sm shadow-lg"
             style={{ animation: "share-modal-pop 420ms cubic-bezier(0.22,1,0.36,1)" }}
           />
           <div
@@ -75,18 +75,18 @@ export default function SharePdfModal({
             <button
               onClick={onShare}
               disabled={sharing}
-              className="w-full rounded-full px-4 py-3 text-sm font-semibold disabled:opacity-50 bg-[#ff9900] text-[#161e2d] hover:bg-[#f2a100]"
+              className="w-full rounded-full px-4 py-3 text-sm font-semibold disabled:opacity-50 bg-[#a32b2b] text-[#ffffff] hover:bg-[#842020]"
             >
               {sharing ? t("sharing") : t("share")}
             </button>
           ) : (
-            <p className="text-center text-xs text-zinc-400">
+            <p className="text-center text-xs text-stone-600">
               {t("shareUnsupported")}
             </p>
           )}
           <button
             onClick={onDownload}
-            className="w-full rounded-full border px-4 py-3 text-sm font-medium border-zinc-700 text-zinc-300 hover:bg-zinc-800"
+            className="w-full rounded-full border px-4 py-3 text-sm font-medium border-zinc-700 text-stone-700 hover:bg-zinc-800"
           >
             {t("download")}
           </button>

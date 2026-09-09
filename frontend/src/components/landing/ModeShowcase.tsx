@@ -4,9 +4,9 @@ const RESOURCE_EXAMPLES = ["ECS", "RDS", "Redis", "ALB", "S3", "Lambda", "Dynamo
 
 function ResultStrip({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex items-center justify-between rounded-lg bg-zinc-900 px-4 py-3 text-sm">
-      <span className="text-zinc-400">{label}</span>
-      <span className="font-bold text-white">{value}</span>
+    <div className="flex items-center justify-between rounded-sm bg-white px-4 py-3 text-sm">
+      <span className="text-stone-600">{label}</span>
+      <span className="font-bold text-stone-900">{value}</span>
     </div>
   );
 }
@@ -15,11 +15,11 @@ function ResourceTags({ more }: { more: string }) {
   return (
     <div className="mt-6 flex flex-wrap gap-2">
       {RESOURCE_EXAMPLES.map((r) => (
-        <span key={r} className="rounded-full border border-white/15 px-3 py-1 text-xs text-slate-300">
+        <span key={r} className="rounded-full border border-stone-300 px-3 py-1 text-xs text-stone-700">
           {r}
         </span>
       ))}
-      <span className="rounded-full border border-white/15 px-3 py-1 text-xs text-slate-500">{more}</span>
+      <span className="rounded-full border border-stone-300 px-3 py-1 text-xs text-stone-9000">{more}</span>
     </div>
   );
 }
@@ -34,20 +34,20 @@ function WizardMock({ t, resultLabel }: { t: ReturnType<typeof useTranslations<"
     { label: "ALB", name: "ALB", detail: "Internet-facing · LCU 1", price: "$22.27", bg: "bg-violet-100", text: "text-violet-800", border: "border-violet-200" },
   ];
   return (
-    <div className="rounded-xl border border-white/10 bg-white p-5 text-zinc-900 shadow-2xl">
-      <p className="text-xs font-semibold uppercase tracking-wide text-[#ff9900]">{t("step1")}</p>
+    <div className="rounded-xl border border-stone-300 bg-white p-5 text-zinc-900 shadow-2xl">
+      <p className="text-xs font-semibold uppercase tracking-wide text-[#a32b2b]">{t("step1")}</p>
       <div className="mt-3 flex items-center gap-3 text-xs">
-        <span className="rounded-md border border-zinc-200 px-2.5 py-1.5 text-zinc-400">{t("namePlaceholder")}</span>
-        <span className="rounded-md border border-zinc-200 px-2.5 py-1.5 font-medium text-zinc-900">{t("usersValue")}</span>
-        <span className="rounded-md border border-zinc-200 px-2.5 py-1.5 font-medium text-zinc-900">{t("requestsValue")}</span>
+        <span className="rounded-sm border border-zinc-200 px-2.5 py-1.5 text-stone-600">{t("namePlaceholder")}</span>
+        <span className="rounded-sm border border-zinc-200 px-2.5 py-1.5 font-medium text-zinc-900">{t("usersValue")}</span>
+        <span className="rounded-sm border border-zinc-200 px-2.5 py-1.5 font-medium text-zinc-900">{t("requestsValue")}</span>
       </div>
 
-      <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-[#ff9900]">{t("step2")}</p>
+      <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-[#a32b2b]">{t("step2")}</p>
       <div className="mt-3 flex flex-col gap-2">
         {resources.map((r) => (
-          <div key={r.name} className="flex items-center justify-between rounded-lg border border-zinc-200 p-2">
+          <div key={r.name} className="flex items-center justify-between rounded-sm border border-zinc-200 p-2">
             <div className="flex items-center gap-2">
-              <span className={`grid h-8 w-10 shrink-0 place-items-center rounded-md border text-[10px] font-bold ${r.bg} ${r.text} ${r.border}`}>
+              <span className={`grid h-8 w-10 shrink-0 place-items-center rounded-sm border text-[10px] font-bold ${r.bg} ${r.text} ${r.border}`}>
                 {r.label}
               </span>
               <div>
@@ -58,12 +58,12 @@ function WizardMock({ t, resultLabel }: { t: ReturnType<typeof useTranslations<"
             <span className="text-xs font-medium text-zinc-500">{r.price}</span>
           </div>
         ))}
-        <div className="rounded-lg border border-dashed border-zinc-300 px-3 py-2 text-center text-[11px] text-zinc-400">
+        <div className="rounded-sm border border-dashed border-zinc-300 px-3 py-2 text-center text-[11px] text-stone-600">
           {t("addResource")}
         </div>
       </div>
 
-      <div className="mt-4 flex justify-center text-zinc-300">↓</div>
+      <div className="mt-4 flex justify-center text-stone-700">↓</div>
       <ResultStrip label={resultLabel} value="$147.28 · ₩203,246" />
     </div>
   );
@@ -79,13 +79,13 @@ function DragBuilderMock({ t, resultLabel }: { t: ReturnType<typeof useTranslati
     { label: "ALB", sub: t("alb"), bg: "bg-violet-100", text: "text-violet-800", border: "border-violet-200" },
   ];
   return (
-    <div className="rounded-xl border border-white/10 bg-white p-5 text-zinc-900 shadow-2xl">
-      <p className="text-xs font-semibold uppercase tracking-wide text-[#ff9900]">{t("diagramTitle")}</p>
-      <div className="relative mt-4 rounded-lg border border-dashed border-slate-300 bg-[linear-gradient(#e5e7eb_1px,transparent_1px),linear-gradient(90deg,#e5e7eb_1px,transparent_1px)] bg-[size:20px_20px] p-4">
+    <div className="rounded-xl border border-stone-300 bg-white p-5 text-zinc-900 shadow-2xl">
+      <p className="text-xs font-semibold uppercase tracking-wide text-[#a32b2b]">{t("diagramTitle")}</p>
+      <div className="relative mt-4 rounded-sm border border-dashed border-slate-300 bg-[linear-gradient(#e5e7eb_1px,transparent_1px),linear-gradient(90deg,#e5e7eb_1px,transparent_1px)] bg-[size:20px_20px] p-4">
         <div className="grid grid-cols-2 gap-3">
           {nodes.map((n) => (
-            <div key={n.label} className={`flex items-center gap-2 rounded-lg border p-2 shadow-sm ${n.bg} ${n.border}`}>
-              <span className={`grid h-8 w-10 shrink-0 place-items-center rounded-md border bg-white text-[10px] font-bold ${n.border} ${n.text}`}>
+            <div key={n.label} className={`flex items-center gap-2 rounded-sm border p-2 shadow-sm ${n.bg} ${n.border}`}>
+              <span className={`grid h-8 w-10 shrink-0 place-items-center rounded-sm border bg-white text-[10px] font-bold ${n.border} ${n.text}`}>
                 {n.label}
               </span>
               <span className="min-w-0">
@@ -96,7 +96,7 @@ function DragBuilderMock({ t, resultLabel }: { t: ReturnType<typeof useTranslati
           ))}
         </div>
       </div>
-      <div className="mt-4 flex justify-center text-zinc-300">↓</div>
+      <div className="mt-4 flex justify-center text-stone-700">↓</div>
       <ResultStrip label={resultLabel} value="$147.28 · ₩203,246" />
     </div>
   );
@@ -106,17 +106,17 @@ function DragBuilderMock({ t, resultLabel }: { t: ReturnType<typeof useTranslati
 // service description goes in, an AI-picked architecture comes out.
 function AiRecommendMock({ t, resultLabel }: { t: ReturnType<typeof useTranslations<"modeShowcase.aiRecommend">>; resultLabel: string }) {
   return (
-    <div className="rounded-xl border border-white/10 bg-white p-5 text-zinc-900 shadow-2xl">
-      <p className="text-xs font-semibold uppercase tracking-wide text-[#ff9900]">{t("descriptionLabel")}</p>
-      <p className="mt-2 rounded-lg border border-zinc-200 bg-zinc-50 px-3 py-2.5 text-sm text-zinc-700">
+    <div className="rounded-xl border border-stone-300 bg-white p-5 text-zinc-900 shadow-2xl">
+      <p className="text-xs font-semibold uppercase tracking-wide text-[#a32b2b]">{t("descriptionLabel")}</p>
+      <p className="mt-2 rounded-sm border border-zinc-200 bg-zinc-50 px-3 py-2.5 text-sm text-zinc-700">
         {t("descriptionExample")}
       </p>
-      <div className="mt-3 flex justify-center text-zinc-300">↓ 🤖</div>
-      <div className="rounded-lg border border-indigo-200 bg-indigo-50 p-3 text-sm">
+      <div className="mt-3 flex justify-center text-stone-700">↓ 🤖</div>
+      <div className="rounded-sm border border-indigo-200 bg-indigo-50 p-3 text-sm">
         <p className="font-semibold text-indigo-900">{t("recommendationTitle")}</p>
         <p className="mt-1 text-xs text-indigo-800">{t("recommendationDetail")}</p>
       </div>
-      <div className="mt-4 flex justify-center text-zinc-300">↓</div>
+      <div className="mt-4 flex justify-center text-stone-700">↓</div>
       <ResultStrip label={resultLabel} value="$147.28 · ₩203,246" />
     </div>
   );
@@ -163,13 +163,13 @@ export default function ModeShowcase() {
   ];
 
   return (
-    <section id="features" className="border-t border-white/10 bg-[#0e1626] py-20">
+    <section id="features" className="border-t border-stone-300 bg-[#0e1626] py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#ff9900]">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#a32b2b]">
             {t("eyebrow")}
           </span>
-          <h2 className="mx-auto mt-4 max-w-2xl text-3xl font-bold text-white">
+          <h2 className="mx-auto mt-4 max-w-2xl text-3xl font-bold text-stone-900">
             {t("title")}
           </h2>
         </div>
@@ -178,15 +178,15 @@ export default function ModeShowcase() {
           {modes.map((mode) => (
             <div key={mode.key} className="grid gap-10 lg:grid-cols-2 lg:items-center">
               <div className={mode.textOrder}>
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#ff9900]">
+                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#a32b2b]">
                   {mode.eyebrow}
                 </span>
-                <h3 className="mt-4 text-3xl font-bold text-balance text-white">
+                <h3 className="mt-4 text-3xl font-bold text-balance text-stone-900">
                   {mode.title[0]}
                   <br />
                   {mode.title[1]}
                 </h3>
-                <p className="mt-4 text-slate-400">{mode.body}</p>
+                <p className="mt-4 text-stone-600">{mode.body}</p>
                 {mode.showTags && <ResourceTags more={t("moreResources")} />}
               </div>
               <div className={mode.mockOrder}>{mode.node}</div>

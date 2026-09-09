@@ -48,27 +48,27 @@ export default function AuthStatus() {
 
   if (user) {
     return (
-      <div className="flex flex-wrap items-center justify-end gap-2 text-sm font-semibold text-slate-100">
-        <span className="rounded border border-white/15 bg-white/5 px-3 py-1.5">
+      <div className="flex flex-wrap items-center justify-end gap-2 text-sm font-semibold text-stone-900">
+        <span className="rounded border border-stone-300 bg-stone-100 px-3 py-1.5">
           {t("credits", { name: user.nickname, balance: balance ?? 0 })}
         </span>
         {user.role === "ADMIN" && (
           <Link
             href="/admin"
-            className="rounded border border-white/20 px-3 py-1.5 hover:bg-white/10"
+            className="rounded border border-stone-300 px-3 py-1.5 hover:bg-stone-200"
           >
             {t("users")}
           </Link>
         )}
         <Link
           href="/mypage"
-          className="rounded bg-[#ff9900] px-3 py-1.5 font-semibold text-[#161e2d] hover:bg-[#f2a100]"
+          className="rounded bg-[#a32b2b] px-3 py-1.5 font-semibold text-[#ffffff] hover:bg-[#842020]"
         >
           {t("mypage")}
         </Link>
         <button
           onClick={handleLogout}
-          className="rounded border border-white/20 px-3 py-1.5 hover:bg-white/10"
+          className="rounded border border-stone-300 px-3 py-1.5 hover:bg-stone-200"
         >
           {t("logout")}
         </button>
@@ -79,7 +79,7 @@ export default function AuthStatus() {
   return (
     <Link
       href="/login"
-      className="rounded border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-slate-100 hover:bg-white/10"
+      className="rounded border border-stone-300 bg-stone-100 px-4 py-2 text-sm font-semibold text-stone-900 hover:bg-stone-200"
     >
       {t("login")}
     </Link>

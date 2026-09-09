@@ -9,11 +9,11 @@ export default function LoginPage() {
   const router = useRouter();
 
   return (
-    <div className="flex min-h-screen items-center justify-center px-4 bg-[#0b1220]">
+    <div className="flex min-h-screen items-center justify-center px-4 bg-[#f7f7f4]">
       <LoginModal open onClose={() => router.push("/calculator")} onSuccess={() => router.push("/calculator")} />
       <Link
         href="/calculator"
-        className="fixed bottom-8 text-xs font-medium underline-offset-2 hover:underline text-slate-400"
+        className="fixed bottom-8 text-xs font-medium underline-offset-2 hover:underline text-stone-600"
       >
         {t("browseWithoutLogin")}
       </Link>

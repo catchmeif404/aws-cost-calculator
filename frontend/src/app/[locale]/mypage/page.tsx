@@ -157,68 +157,68 @@ export default function MyPage() {
   }
 
   return (
-    <main className="min-h-screen px-4 py-8 bg-[#0b1220] text-slate-50 sm:px-6 lg:px-8">
+    <main className="min-h-screen px-4 py-8 bg-[#f7f7f4] text-stone-900 sm:px-6 lg:px-8">
       <div className="mx-auto flex w-full max-w-4xl flex-col gap-6">
         <div className="flex items-center justify-between gap-4">
           <div>
-            <div className="text-xs font-semibold uppercase text-[#ff9900]">My Page</div>
+            <div className="text-xs font-semibold uppercase text-[#a32b2b]">My Page</div>
             <h1 className="mt-1 text-2xl font-bold">{t("title")}</h1>
           </div>
           <Link
             href="/calculator"
-            className="rounded border px-4 py-2 text-sm font-semibold border-slate-700 text-slate-200 hover:bg-slate-900"
+            className="rounded border px-4 py-2 text-sm font-semibold border-slate-700 text-stone-800 hover:bg-stone-100"
           >
             {t("backToCalculator")}
           </Link>
         </div>
 
         {loading ? (
-          <div className="rounded-lg border p-6 shadow-sm border-slate-800 bg-slate-950">
+          <div className="rounded-sm border p-6 shadow-sm border-slate-800 bg-white">
             {t("loading")}
           </div>
         ) : !user ? (
-          <div className="rounded-lg border p-6 shadow-sm border-slate-800 bg-slate-950">
-            <p className="text-sm text-slate-400">{t("loginRequired")}</p>
+          <div className="rounded-sm border p-6 shadow-sm border-slate-800 bg-white">
+            <p className="text-sm text-stone-600">{t("loginRequired")}</p>
             <Link
               href="/login"
-              className="mt-4 inline-flex rounded bg-[#ff9900] px-5 py-2.5 text-sm font-semibold text-[#161e2d] hover:bg-[#f2a100]"
+              className="mt-4 inline-flex rounded bg-[#a32b2b] px-5 py-2.5 text-sm font-semibold text-[#ffffff] hover:bg-[#842020]"
             >
               {t("loginCta")}
             </Link>
           </div>
         ) : (
           <>
-            <section className="rounded-lg border p-6 shadow-sm border-slate-800 bg-slate-950">
+            <section className="rounded-sm border p-6 shadow-sm border-slate-800 bg-white">
               <h2 className="text-lg font-semibold">{t("accountInfo")}</h2>
               <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
                 <div>
-                  <dt className="text-slate-400">{t("nickname")}</dt>
+                  <dt className="text-stone-600">{t("nickname")}</dt>
                   <dd className="mt-1 font-medium">{user.nickname}</dd>
                 </div>
                 <div>
-                  <dt className="text-slate-400">{t("email")}</dt>
+                  <dt className="text-stone-600">{t("email")}</dt>
                   <dd className="mt-1 font-medium">{user.email}</dd>
                 </div>
               </dl>
             </section>
 
-            <section className="rounded-lg border p-6 shadow-sm border-slate-800 bg-slate-950">
+            <section className="rounded-sm border p-6 shadow-sm border-slate-800 bg-white">
               <h2 className="text-lg font-semibold">{t("credits")}</h2>
-              <div className="mt-4 text-3xl font-bold text-[#ff9900]">{credits?.balance ?? 0}</div>
+              <div className="mt-4 text-3xl font-bold text-[#a32b2b]">{credits?.balance ?? 0}</div>
               <div className="mt-4 divide-y rounded border divide-slate-800 border-slate-800">
                 {(credits?.recentTransactions ?? []).slice(0, 5).map((item) => (
                   <div key={item.id} className="flex items-center justify-between px-4 py-3 text-sm">
-                    <span className="text-slate-400">{item.description}</span>
+                    <span className="text-stone-600">{item.description}</span>
                     <span className="font-semibold">{item.amount > 0 ? "+" : ""}{item.amount}</span>
                   </div>
                 ))}
               </div>
             </section>
 
-            <section className="rounded-lg border p-6 shadow-sm border-slate-800 bg-slate-950">
+            <section className="rounded-sm border p-6 shadow-sm border-slate-800 bg-white">
               <h2 className="text-lg font-semibold">{t("history")}</h2>
               {projects.length === 0 ? (
-                <p className="mt-4 text-sm text-slate-400">
+                <p className="mt-4 text-sm text-stone-600">
                   {t("noHistory")}
                 </p>
               ) : (
@@ -228,17 +228,17 @@ export default function MyPage() {
                       key={item.calculationId}
                       type="button"
                       onClick={() => openReport(item)}
-                      className="flex w-full items-center justify-between gap-4 px-4 py-3 text-left text-sm hover:bg-slate-900"
+                      className="flex w-full items-center justify-between gap-4 px-4 py-3 text-left text-sm hover:bg-stone-100"
                     >
                       <div>
                         <div className="font-medium">{item.projectName}</div>
-                        <div className="mt-0.5 text-xs text-slate-400">
+                        <div className="mt-0.5 text-xs text-stone-600">
                           {item.region} · {formatDate(item.calculatedAt)}
                         </div>
                       </div>
                       <div className="shrink-0 text-right">
                         <div className="font-semibold">{formatUsd(item.totalMonthlyCostUsd)}</div>
-                        <div className="text-xs text-slate-400">
+                        <div className="text-xs text-stone-600">
                           {formatKrw(item.totalMonthlyCostKrw)}
                         </div>
                       </div>
@@ -267,12 +267,12 @@ export default function MyPage() {
 
       {openedItem && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/45 p-4 backdrop-blur-sm">
-          <div className="max-h-[90vh] w-full max-w-2xl overflow-hidden rounded-lg border shadow-2xl border-slate-800 bg-slate-950">
-            <div className="flex items-start justify-between gap-4 border-b border-white/10 bg-[#232f3e] p-5 text-white">
+          <div className="max-h-[90vh] w-full max-w-2xl overflow-hidden rounded-sm border shadow-2xl border-slate-800 bg-white">
+            <div className="flex items-start justify-between gap-4 border-b border-stone-300 bg-stone-100 p-5 text-stone-900">
               <div>
-                <div className="text-xs font-semibold uppercase text-[#ff9900]">{t("reportLabel")}</div>
+                <div className="text-xs font-semibold uppercase text-[#a32b2b]">{t("reportLabel")}</div>
                 <h3 className="mt-1 text-lg font-semibold">{openedItem.projectName}</h3>
-                <p className="mt-1 text-sm text-slate-300">
+                <p className="mt-1 text-sm text-stone-700">
                   {openedItem.region} · {formatDate(openedItem.calculatedAt)}
                 </p>
               </div>
@@ -282,7 +282,7 @@ export default function MyPage() {
                     type="button"
                     onClick={handleOpenShareModal}
                     disabled={generating}
-                    className="rounded border border-white/20 px-3 py-2 text-xs font-semibold text-slate-100 hover:bg-white/10 disabled:opacity-50"
+                    className="rounded border border-stone-300 px-3 py-2 text-xs font-semibold text-stone-900 hover:bg-stone-200 disabled:opacity-50"
                   >
                     {generating ? t("exporting") : t("exportPdf")}
                   </button>
@@ -290,7 +290,7 @@ export default function MyPage() {
                 <button
                   type="button"
                   onClick={closeReport}
-                  className="grid h-8 w-8 shrink-0 place-items-center rounded border border-white/20 text-sm text-slate-200 hover:bg-white/10 hover:text-white"
+                  className="grid h-8 w-8 shrink-0 place-items-center rounded border border-stone-300 text-sm text-stone-800 hover:bg-stone-200 hover:text-stone-900"
                 >
                   x
                 </button>
@@ -302,7 +302,7 @@ export default function MyPage() {
                 <p className="mb-3 text-sm text-red-400">{generateError}</p>
               )}
               {reportLoading && (
-                <p className="text-sm text-slate-400">{t("loading")}</p>
+                <p className="text-sm text-stone-600">{t("loading")}</p>
               )}
               {reportError && (
                 <p className="text-sm text-red-400">{reportError}</p>
@@ -312,10 +312,10 @@ export default function MyPage() {
                 // "report" content that gets captured as the PDF/share card (ShareCard.tsx), so
                 // it must always look like what gets exported: white background, black price card.
                 <div className="flex flex-col gap-4 rounded-2xl border border-zinc-200 bg-white p-6 text-zinc-900">
-                  <div className="flex flex-col items-center gap-1 rounded-2xl py-10 bg-zinc-900 text-white">
-                    <span className="text-sm text-zinc-400">{t("estimatedCost")}</span>
+                  <div className="flex flex-col items-center gap-1 rounded-2xl py-10 bg-white text-stone-900">
+                    <span className="text-sm text-stone-600">{t("estimatedCost")}</span>
                     <span className="text-4xl font-bold">{formatUsd(reportData.totalMonthlyCost)}</span>
-                    <span className="text-zinc-400">
+                    <span className="text-stone-600">
                       {formatKrw(reportData.totalMonthlyCostKrw)}
                     </span>
                   </div>
@@ -356,11 +356,11 @@ export default function MyPage() {
                       <p className="mt-1 text-sm text-indigo-800">
                         {reportData.recommendationMetadata.description}
                       </p>
-                      <p className="mt-3 rounded-lg bg-white/60 p-3 text-sm text-indigo-900">
+                      <p className="mt-3 rounded-sm bg-white/60 p-3 text-sm text-indigo-900">
                         {reportData.recommendationMetadata.recommendationReason}
                       </p>
                       {reportData.recommendationMetadata.additionalRecommendations.length > 0 && (
-                        <div className="mt-3 rounded-lg border p-3 text-sm border-amber-200 bg-amber-50 text-amber-900">
+                        <div className="mt-3 rounded-sm border p-3 text-sm border-amber-200 bg-amber-50 text-amber-900">
                           <div className="font-medium">{t("additionalRecommendations")}</div>
                           <ul className="mt-2 list-disc space-y-1 pl-5">
                             {reportData.recommendationMetadata.additionalRecommendations.map((item, index) => (

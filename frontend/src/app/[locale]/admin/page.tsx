@@ -120,10 +120,10 @@ export default function AdminUsersPage() {
 
   if (isAdmin === null || loading) {
     return (
-      <main className="min-h-screen px-4 py-8 bg-[#0b1220]">
-        <div className="mx-auto max-w-3xl rounded-lg border p-6 shadow-sm border-slate-800 bg-slate-950">
-          <h1 className="text-2xl font-bold text-slate-50">회원 관리</h1>
-          <p className="mt-3 text-sm text-slate-300">불러오는 중...</p>
+      <main className="min-h-screen px-4 py-8 bg-[#f7f7f4]">
+        <div className="mx-auto max-w-3xl rounded-sm border p-6 shadow-sm border-slate-800 bg-white">
+          <h1 className="text-2xl font-bold text-stone-900">회원 관리</h1>
+          <p className="mt-3 text-sm text-stone-700">불러오는 중...</p>
         </div>
       </main>
     );
@@ -131,11 +131,11 @@ export default function AdminUsersPage() {
 
   if (!initialToken) {
     return (
-      <main className="min-h-screen px-4 py-8 bg-[#0b1220]">
-        <div className="mx-auto max-w-3xl rounded-lg border p-6 shadow-sm border-slate-800 bg-slate-950">
-          <h1 className="text-2xl font-bold text-slate-50">회원 관리</h1>
-          <p className="mt-3 text-sm text-slate-300">로그인 후 사용할 수 있습니다.</p>
-          <Link className="mt-5 inline-flex rounded bg-[#ff9900] px-5 py-2.5 text-sm font-semibold text-[#161e2d]" href="/login">
+      <main className="min-h-screen px-4 py-8 bg-[#f7f7f4]">
+        <div className="mx-auto max-w-3xl rounded-sm border p-6 shadow-sm border-slate-800 bg-white">
+          <h1 className="text-2xl font-bold text-stone-900">회원 관리</h1>
+          <p className="mt-3 text-sm text-stone-700">로그인 후 사용할 수 있습니다.</p>
+          <Link className="mt-5 inline-flex rounded bg-[#a32b2b] px-5 py-2.5 text-sm font-semibold text-[#ffffff]" href="/login">
             로그인하기
           </Link>
         </div>
@@ -145,11 +145,11 @@ export default function AdminUsersPage() {
 
   if (!isAdmin) {
     return (
-      <main className="min-h-screen px-4 py-8 bg-[#0b1220]">
-        <div className="mx-auto max-w-3xl rounded-lg border p-6 shadow-sm border-slate-800 bg-slate-950">
-          <h1 className="text-2xl font-bold text-slate-50">관리자 전용</h1>
-          <p className="mt-3 text-sm text-slate-300">회원 관리는 관리자만 사용할 수 있습니다.</p>
-          <Link className="mt-5 inline-flex rounded border px-5 py-2.5 text-sm font-semibold border-slate-700 text-slate-100" href="/calculator">
+      <main className="min-h-screen px-4 py-8 bg-[#f7f7f4]">
+        <div className="mx-auto max-w-3xl rounded-sm border p-6 shadow-sm border-slate-800 bg-white">
+          <h1 className="text-2xl font-bold text-stone-900">관리자 전용</h1>
+          <p className="mt-3 text-sm text-stone-700">회원 관리는 관리자만 사용할 수 있습니다.</p>
+          <Link className="mt-5 inline-flex rounded border px-5 py-2.5 text-sm font-semibold border-slate-700 text-stone-900" href="/calculator">
             계산기로 돌아가기
           </Link>
         </div>
@@ -158,13 +158,13 @@ export default function AdminUsersPage() {
   }
 
   return (
-    <main className="min-h-screen px-4 py-8 bg-[#0b1220] text-slate-50 sm:px-6 lg:px-8">
+    <main className="min-h-screen px-4 py-8 bg-[#f7f7f4] text-stone-900 sm:px-6 lg:px-8">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-6">
         <div className="flex items-center justify-between gap-4">
           <div>
-            <div className="text-xs font-semibold uppercase text-[#ff9900]">Admin</div>
+            <div className="text-xs font-semibold uppercase text-[#a32b2b]">Admin</div>
             <h1 className="mt-1 text-2xl font-bold">회원 관리</h1>
-            <p className="mt-1 text-sm text-slate-400">전체 회원 {users.length}명 (최대 200명 표시)</p>
+            <p className="mt-1 text-sm text-stone-600">전체 회원 {users.length}명 (최대 200명 표시)</p>
           </div>
           <Link className="rounded border px-4 py-2 text-sm font-semibold border-slate-700" href="/calculator">
             계산기로 돌아가기
@@ -182,28 +182,28 @@ export default function AdminUsersPage() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="이메일 또는 닉네임 검색"
-            className="flex-1 rounded border px-3 py-2 text-sm border-slate-700 bg-slate-900"
+            className="flex-1 rounded border px-3 py-2 text-sm border-slate-700 bg-stone-100"
           />
-          <button className="rounded border px-4 py-2 text-sm font-semibold border-slate-700 hover:bg-slate-900">
+          <button className="rounded border px-4 py-2 text-sm font-semibold border-slate-700 hover:bg-stone-100">
             검색
           </button>
         </form>
 
         <div className="flex flex-col gap-3">
           {users.length === 0 ? (
-            <p className="rounded-lg border p-6 text-sm text-slate-400 border-slate-800 bg-slate-950">
+            <p className="rounded-sm border p-6 text-sm text-stone-600 border-slate-800 bg-white">
               조건에 맞는 회원이 없습니다.
             </p>
           ) : (
             users.map((user) => (
-              <div key={user.id} className="rounded-lg border p-4 border-slate-800 bg-slate-950">
+              <div key={user.id} className="rounded-sm border p-4 border-slate-800 bg-white">
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <div>
                     <div className="flex items-center gap-2 font-semibold">
                       {user.nickname}
                       <span
                         className={`rounded-full px-2 py-0.5 text-xs font-semibold ${
-                          user.role === "ADMIN" ? "bg-indigo-950 text-indigo-300" : "bg-slate-800 text-slate-400"
+                          user.role === "ADMIN" ? "bg-indigo-950 text-indigo-300" : "bg-stone-200 text-stone-600"
                         }`}
                       >
                         {user.role}
@@ -214,17 +214,17 @@ export default function AdminUsersPage() {
                         </span>
                       )}
                     </div>
-                    <p className="mt-1 text-xs text-slate-400">
+                    <p className="mt-1 text-xs text-stone-600">
                       {user.email} · 가입일 {formatDate(user.createdAt)}
                     </p>
                   </div>
                   <div className="flex items-center gap-3">
-                    <span className="text-sm font-semibold text-[#ff9900]">크레딧 {user.creditBalance}</span>
+                    <span className="text-sm font-semibold text-[#a32b2b]">크레딧 {user.creditBalance}</span>
                     <button
                       type="button"
                       onClick={() => handleToggleRole(user)}
                       disabled={busyUserId === user.id}
-                      className="rounded border px-3 py-1.5 text-xs font-semibold border-slate-700 hover:bg-slate-900 disabled:opacity-50"
+                      className="rounded border px-3 py-1.5 text-xs font-semibold border-slate-700 hover:bg-stone-100 disabled:opacity-50"
                     >
                       {user.role === "ADMIN" ? "일반으로 변경" : "관리자로 변경"}
                     </button>
@@ -237,19 +237,19 @@ export default function AdminUsersPage() {
                     value={creditAmount[user.id] ?? ""}
                     onChange={(e) => setCreditAmount((current) => ({ ...current, [user.id]: e.target.value }))}
                     placeholder="±크레딧"
-                    className="w-28 rounded border px-2 py-1.5 text-sm border-slate-700 bg-slate-900"
+                    className="w-28 rounded border px-2 py-1.5 text-sm border-slate-700 bg-stone-100"
                   />
                   <input
                     value={creditReason[user.id] ?? ""}
                     onChange={(e) => setCreditReason((current) => ({ ...current, [user.id]: e.target.value }))}
                     placeholder="조정 사유 (예: 이벤트 지급)"
-                    className="flex-1 min-w-[160px] rounded border px-2 py-1.5 text-sm border-slate-700 bg-slate-900"
+                    className="flex-1 min-w-[160px] rounded border px-2 py-1.5 text-sm border-slate-700 bg-stone-100"
                   />
                   <button
                     type="button"
                     onClick={() => handleAdjustCredits(user.id)}
                     disabled={busyUserId === user.id}
-                    className="rounded bg-[#ff9900] px-3 py-1.5 text-xs font-semibold text-[#161e2d] hover:bg-[#f2a100] disabled:opacity-50"
+                    className="rounded bg-[#a32b2b] px-3 py-1.5 text-xs font-semibold text-[#ffffff] hover:bg-[#842020] disabled:opacity-50"
                   >
                     크레딧 조정
                   </button>

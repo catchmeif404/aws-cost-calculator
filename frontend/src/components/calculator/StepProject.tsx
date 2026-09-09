@@ -42,18 +42,21 @@ export default function StepProject({
 
   return (
     <div className="flex flex-col gap-5">
-      <div className="overflow-hidden rounded-lg border shadow-sm border-slate-800 bg-slate-950">
-        <div className="border-b bg-[#232f3e] px-5 py-4 text-white border-slate-800">
-          <div className="text-xs font-semibold uppercase text-[#ff9900]">{t("stepProject.stepLabel")}</div>
-          <h2 className="mt-1 text-lg font-semibold">{t("stepProject.title")}</h2>
-          <p className="mt-1 text-sm text-slate-300">
+      <div className="overflow-hidden border-y border-stone-300 bg-[#ffffff]">
+        <div className="border-b border-stone-300 bg-[#eceee9] px-5 py-5 text-stone-900 sm:px-6">
+          <div className="flex items-center justify-between gap-4">
+            <div className="text-xs font-semibold uppercase tracking-[0.16em] text-[#a32b2b]">{t("stepProject.stepLabel")}</div>
+            <span className="text-xs text-stone-9000">01 / 03</span>
+          </div>
+          <h2 className="mt-2 text-xl font-semibold tracking-normal">{t("stepProject.title")}</h2>
+          <p className="mt-1 text-sm text-stone-700">
             {t("stepProject.subtitle")}
           </p>
         </div>
 
-        <div className="grid gap-4 p-5 lg:grid-cols-2">
+        <div className="grid gap-4 p-5 sm:p-6 lg:grid-cols-2">
       <label className="flex flex-col gap-2 lg:col-span-2">
-        <span className="text-sm font-medium text-zinc-300">
+        <span className="text-xs font-semibold uppercase tracking-wide text-stone-600">
           {t("projectFields.serviceName")}
         </span>
         <input
@@ -61,13 +64,13 @@ export default function StepProject({
           value={projectName}
           onChange={(e) => onChange(e.target.value)}
           placeholder={t("projectFields.namePlaceholder")}
-          className="rounded-lg border px-4 py-2.5 outline-none border-zinc-700 bg-zinc-900 text-zinc-50 focus:border-zinc-400"
+          className="rounded-sm border border-stone-300 bg-[#f7f7f4] px-4 py-3 text-sm text-stone-900 outline-none transition-colors placeholder:text-slate-600 focus:border-[#a32b2b]/70 focus:ring-2 focus:ring-[#a32b2b]/10"
         />
       </label>
 
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="flex flex-col gap-2">
-          <span className="text-sm font-medium text-zinc-300">
+          <span className="text-xs font-semibold uppercase tracking-wide text-stone-600">
             {t("projectFields.monthlyUsers")}
           </span>
           <input
@@ -75,12 +78,12 @@ export default function StepProject({
             min={0}
             value={monthlyUsers}
             onChange={(e) => onMonthlyUsersChange(Number(e.target.value))}
-            className="rounded-lg border px-4 py-2.5 outline-none border-zinc-700 bg-zinc-900 text-zinc-50 focus:border-zinc-400"
+            className="rounded-sm border border-stone-300 bg-[#f7f7f4] px-4 py-3 text-sm text-stone-900 outline-none transition-colors focus:border-[#a32b2b]/70 focus:ring-2 focus:ring-[#a32b2b]/10"
           />
         </label>
 
         <label className="flex flex-col gap-2">
-          <span className="text-sm font-medium text-zinc-300">
+          <span className="text-xs font-semibold uppercase tracking-wide text-stone-600">
             {t("projectFields.requestsPerUser")}
           </span>
           <input
@@ -88,19 +91,19 @@ export default function StepProject({
             min={0}
             value={requestsPerUser}
             onChange={(e) => onRequestsPerUserChange(Number(e.target.value))}
-            className="rounded-lg border px-4 py-2.5 outline-none border-zinc-700 bg-zinc-900 text-zinc-50 focus:border-zinc-400"
+            className="rounded-sm border border-stone-300 bg-[#f7f7f4] px-4 py-3 text-sm text-stone-900 outline-none transition-colors focus:border-[#a32b2b]/70 focus:ring-2 focus:ring-[#a32b2b]/10"
           />
         </label>
       </div>
 
       <label className="flex flex-col gap-2">
-        <span className="text-sm font-medium text-zinc-300">
+        <span className="text-xs font-semibold uppercase tracking-wide text-stone-600">
           {t("projectFields.busyTraffic")}
         </span>
         <select
           value={busyTrafficLevel}
           onChange={(e) => onBusyTrafficLevelChange(e.target.value)}
-          className="rounded-lg border px-4 py-2.5 outline-none border-zinc-700 bg-zinc-900 text-zinc-50 focus:border-zinc-400"
+          className="rounded-sm border border-stone-300 bg-[#f7f7f4] px-4 py-3 text-sm text-stone-900 outline-none transition-colors focus:border-[#a32b2b]/70 focus:ring-2 focus:ring-[#a32b2b]/10"
         >
           <option value="similar">{t("projectFields.trafficSimilar")}</option>
           <option value="two_to_three_times">{t("projectFields.trafficTwoToThree")}</option>
@@ -110,13 +113,13 @@ export default function StepProject({
       </label>
 
       <label className="flex flex-col gap-2">
-        <span className="text-sm font-medium text-zinc-300">
+        <span className="text-xs font-semibold uppercase tracking-wide text-stone-600">
           {t("projectFields.serviceStage")}
         </span>
         <select
           value={serviceStage}
           onChange={(e) => onServiceStageChange(e.target.value)}
-          className="rounded-lg border px-4 py-2.5 outline-none border-zinc-700 bg-zinc-900 text-zinc-50 focus:border-zinc-400"
+          className="rounded-sm border border-stone-300 bg-[#f7f7f4] px-4 py-3 text-sm text-stone-900 outline-none transition-colors focus:border-[#a32b2b]/70 focus:ring-2 focus:ring-[#a32b2b]/10"
         >
           <option value="toy">{t("projectFields.stageToy")}</option>
           <option value="mvp">{t("projectFields.stageMvp")}</option>
@@ -126,13 +129,13 @@ export default function StepProject({
       </label>
 
       <label className="flex flex-col gap-2 lg:col-span-2">
-        <span className="text-sm font-medium text-zinc-300">
+        <span className="text-xs font-semibold uppercase tracking-wide text-stone-600">
           {t("projectFields.region")}
         </span>
         <select
           value={region}
           onChange={(e) => onRegionChange(e.target.value)}
-          className="rounded-lg border px-4 py-2.5 outline-none border-zinc-700 bg-zinc-900 text-zinc-50 focus:border-zinc-400"
+          className="rounded-sm border border-stone-300 bg-[#f7f7f4] px-4 py-3 text-sm text-stone-900 outline-none transition-colors focus:border-[#a32b2b]/70 focus:ring-2 focus:ring-[#a32b2b]/10"
         >
           {REGIONS.map((r) => (
             <option key={r.code} value={r.code}>
@@ -142,19 +145,33 @@ export default function StepProject({
         </select>
       </label>
         </div>
+        <div className="grid gap-3 border-t border-stone-300 bg-[#f1f2ee] px-5 py-4 sm:grid-cols-3 sm:px-6">
+          <div>
+            <p className="text-[11px] font-semibold uppercase tracking-wide text-stone-9000">{t("projectFields.region")}</p>
+            <p className="mt-1 truncate text-sm font-medium text-stone-800">{regionLabel(region, locale)}</p>
+          </div>
+          <div>
+            <p className="text-[11px] font-semibold uppercase tracking-wide text-stone-9000">{t("projectFields.monthlyUsers")}</p>
+            <p className="mt-1 text-sm font-medium text-stone-800">{monthlyUsers.toLocaleString(locale)}</p>
+          </div>
+          <div>
+            <p className="text-[11px] font-semibold uppercase tracking-wide text-stone-9000">{t("projectFields.serviceStage")}</p>
+            <p className="mt-1 text-sm font-medium capitalize text-stone-800">{serviceStage}</p>
+          </div>
+        </div>
       </div>
 
       <div className="flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
         <button
           onClick={onSwitchToRecommend}
-          className="text-sm font-medium underline-offset-2 hover:underline text-zinc-400"
+          className="text-sm font-medium text-stone-600 underline-offset-2 hover:text-stone-800 hover:underline"
         >
           {t("stepProject.switchToRecommend")}
         </button>
         <button
           onClick={onNext}
           disabled={!canProceed}
-          className="rounded bg-[#ff9900] px-6 py-3 font-semibold text-[#161e2d] transition-colors hover:bg-[#f2a100] disabled:cursor-not-allowed disabled:opacity-40"
+          className="rounded-sm bg-[#a32b2b] px-6 py-3 font-semibold text-[#ffffff] transition-colors hover:bg-[#842020] disabled:cursor-not-allowed disabled:opacity-40"
         >
           {t("stepProject.next")}
         </button>

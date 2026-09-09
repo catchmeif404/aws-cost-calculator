@@ -25,7 +25,15 @@
       "ctaSecondary": "어떻게 동작하는지 보기",
       "statResources": "지원 AWS 리소스",
       "statRegions": "지원 리전",
-      "statCurrency": "동시 계산"
+      "statCurrency": "동시 계산",
+      "snapshotEyebrow": "AWS / ESTIMATE",
+      "snapshotTitle": "아키텍처 비용 요약",
+      "snapshotStatus": "가격 카탈로그 연결됨",
+      "snapshotEcs": "ECS Fargate",
+      "snapshotRds": "RDS",
+      "snapshotAlb": "ALB",
+      "snapshotTotal": "월 예상 비용",
+      "snapshotBasis": "USD + KRW · 현재 구성 기준"
     },
     "optimization": {
       "eyebrow": "비용 최적화 · AI 설명",
@@ -122,8 +130,11 @@
   },
   "calculatorPage": {
     "brand": "AWS CostPilot",
-    "title": "AWS 비용 계산기",
-    "subtitle": "서비스 정보와 시스템 구성도를 바탕으로 월 예상 비용을 계산합니다."
+    "title": "AWS 비용 조사 기록",
+    "subtitle": "서비스 정보와 시스템 구성도를 바탕으로 월 예상 비용을 계산합니다.",
+    "workEyebrow": "REF. 0000-404 / A",
+    "workBody": "01. 기초 기록 / 02. 리소스 구성 / 03. 비용 보고서",
+    "catalogStatus": "통화: USD / KRW"
   },
   "authStatus": {
     "credits": "{name}님 · 크레딧 {balance}",
@@ -367,5 +378,28 @@
     "aiRecommendedConfig": "🤖 AI 추천 구성",
     "additionalRecommendations": "추가 권장 구성",
     "diagramTitle": "시스템 구성도"
+  },
+  "caseLanding": {
+    "archive": "증거물 보관소",
+    "classification": "공개 기록",
+    "category": "비용 조사",
+    "lead": "청구서가 찾아오기 전에, 먼저 찾아내세요.",
+    "description": "다음 AWS 아키텍처의 비용을 조사합니다. 리소스를 기록하고, 월 비용의 출처를 추적하고, 달러와 원화로 견적을 남깁니다.",
+    "subject": "조사 대상",
+    "monthlyCost": "월 지출",
+    "author": "작성자",
+    "redacted": "신원 비공개",
+    "open": "조사 진행 중",
+    "start": "비용 조사 시작",
+    "login": "저장된 기록 열기",
+    "note": "실제 AWS 청구서가 아닌 예상 견적입니다. 계산·저장에는 로그인이 필요합니다.",
+    "methods": "조사 방식 선택",
+    "wizardTitle": "기초 사실 기록",
+    "wizardBody": "서비스 정보를 입력하고 리소스를 단계별로 구성합니다.",
+    "visualTitle": "구조 추적",
+    "visualBody": "리소스를 배치해 아키텍처를 만들고 비용을 확인합니다.",
+    "recommendTitle": "단서 확보",
+    "recommendBody": "서비스를 설명하면 AI가 검토할 아키텍처를 제안합니다.",
+    "footer": "비용은 찾았습니다. 작성자는 아직입니다."
   }
 }

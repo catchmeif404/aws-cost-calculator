@@ -25,7 +25,15 @@
       "ctaSecondary": "See how it works",
       "statResources": "AWS resources supported",
       "statRegions": "regions supported",
-      "statCurrency": "computed together"
+      "statCurrency": "computed together",
+      "snapshotEyebrow": "AWS / ESTIMATE",
+      "snapshotTitle": "Architecture cost snapshot",
+      "snapshotStatus": "LIVE CATALOG",
+      "snapshotEcs": "ECS Fargate",
+      "snapshotRds": "RDS",
+      "snapshotAlb": "ALB",
+      "snapshotTotal": "Estimated monthly cost",
+      "snapshotBasis": "USD + KRW · based on your configuration"
     },
     "optimization": {
       "eyebrow": "Cost Optimization · AI Explanations",
@@ -122,8 +130,11 @@
   },
   "calculatorPage": {
     "brand": "AWS CostPilot",
-    "title": "AWS Cost Calculator",
-    "subtitle": "Estimates your monthly cost from your service details and system diagram."
+    "title": "AWS cost investigation",
+    "subtitle": "Estimates your monthly cost from your service details and system diagram.",
+    "workEyebrow": "REF. 0000-404 / A",
+    "workBody": "01. Intake / 02. Resources / 03. Cost report",
+    "catalogStatus": "CURRENCY: USD / KRW"
   },
   "authStatus": {
     "credits": "{name} · {balance} credits",
@@ -367,5 +378,28 @@
     "aiRecommendedConfig": "🤖 AI-recommended configuration",
     "additionalRecommendations": "Additional recommendations",
     "diagramTitle": "System diagram"
+  },
+  "caseLanding": {
+    "archive": "Evidence archive",
+    "classification": "PUBLIC RECORD",
+    "category": "COST INVESTIGATION",
+    "lead": "Find the bill. Before it finds you.",
+    "description": "A cost investigation for your next AWS architecture. Record the resources, trace the monthly costs, and leave with an estimate in USD and KRW.",
+    "subject": "SUBJECT",
+    "monthlyCost": "Monthly expenditure",
+    "author": "FILED BY",
+    "redacted": "Identity withheld",
+    "open": "CASE OPEN",
+    "start": "Open a cost file",
+    "login": "Access saved files",
+    "note": "Estimates are projections, not an AWS invoice. Sign in to calculate and save.",
+    "methods": "Choose an investigation",
+    "wizardTitle": "Record the facts",
+    "wizardBody": "Enter your service details and configure resources step by step.",
+    "visualTitle": "Map the evidence",
+    "visualBody": "Arrange resources into an architecture and inspect its cost.",
+    "recommendTitle": "Follow a lead",
+    "recommendBody": "Describe your service. Get an AI architecture recommendation to review.",
+    "footer": "You found the costs. You didn't find me."
   }
 }

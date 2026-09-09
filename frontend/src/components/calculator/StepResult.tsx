@@ -98,14 +98,14 @@ export default function StepResult({
   if (loading) {
     return (
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/45 p-4 backdrop-blur-sm">
-        <div className="w-full max-w-sm overflow-hidden rounded-lg border text-center shadow-2xl border-slate-800 bg-slate-950">
-          <div className="bg-[#232f3e] px-6 py-4 text-left text-white">
-            <div className="text-xs font-semibold uppercase text-[#ff9900]">Calculating</div>
+        <div className="w-full max-w-sm overflow-hidden rounded-sm border text-center shadow-2xl border-slate-800 bg-white">
+          <div className="bg-stone-100 px-6 py-4 text-left text-stone-900">
+            <div className="text-xs font-semibold uppercase text-[#a32b2b]">Calculating</div>
             <h3 className="mt-1 text-base font-semibold">{t("calculatingTitle")}</h3>
           </div>
           <div className="p-6">
-            <div className="mx-auto h-10 w-10 animate-spin rounded-full border-2 border-t-[#ff9900] border-slate-800" />
-            <p className="mt-4 text-sm text-slate-400">
+            <div className="mx-auto h-10 w-10 animate-spin rounded-full border-2 border-t-[#a32b2b] border-slate-800" />
+            <p className="mt-4 text-sm text-stone-600">
               {t("calculatingBody")}
             </p>
           </div>
@@ -122,7 +122,7 @@ export default function StepResult({
         </div>
         <button
           onClick={onBack}
-          className="rounded-full border px-5 py-3 font-medium border-zinc-700 text-zinc-300 hover:bg-zinc-900"
+          className="rounded-full border px-5 py-3 font-medium border-zinc-700 text-stone-700 hover:bg-white"
         >
           {t("backToStart")}
         </button>
@@ -187,14 +187,14 @@ export default function StepResult({
       <CreditRequiredModal open={creditModalOpen} onClose={() => setCreditModalOpen(false)} />
       {optimizing && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/45 p-4 backdrop-blur-sm">
-          <div className="w-full max-w-sm overflow-hidden rounded-lg border text-center shadow-2xl border-slate-800 bg-slate-950">
-            <div className="bg-[#232f3e] px-6 py-4 text-left text-white">
-              <div className="text-xs font-semibold uppercase text-[#ff9900]">Analyzing</div>
+          <div className="w-full max-w-sm overflow-hidden rounded-sm border text-center shadow-2xl border-slate-800 bg-white">
+            <div className="bg-stone-100 px-6 py-4 text-left text-stone-900">
+              <div className="text-xs font-semibold uppercase text-[#a32b2b]">Analyzing</div>
               <h3 className="mt-1 text-base font-semibold">{t("analyzingTitle")}</h3>
             </div>
             <div className="p-6">
-              <div className="mx-auto h-10 w-10 animate-spin rounded-full border-2 border-t-[#ff9900] border-slate-800" />
-              <p className="mt-4 text-sm text-slate-400">
+              <div className="mx-auto h-10 w-10 animate-spin rounded-full border-2 border-t-[#a32b2b] border-slate-800" />
+              <p className="mt-4 text-sm text-stone-600">
                 {t("analyzingBody")}
               </p>
             </div>
@@ -221,14 +221,15 @@ export default function StepResult({
         />
       </div>
 
-      <div className="flex items-start justify-between gap-4">
-        <h2 className="text-lg font-semibold text-zinc-50">
-          {t("title")}
-        </h2>
+      <div className="flex items-start justify-between gap-4 border-b border-stone-300 pb-5">
+        <div>
+          <div className="text-xs font-semibold uppercase tracking-[0.16em] text-[#a32b2b]">03 / 03</div>
+          <h2 className="mt-2 text-xl font-semibold tracking-normal text-stone-900">{t("title")}</h2>
+        </div>
         <button
           onClick={handleOpenShareModal}
           disabled={generating}
-          className="shrink-0 rounded-full px-4 py-2 text-sm font-medium disabled:opacity-50 bg-[#ff9900] text-[#161e2d] hover:bg-[#f2a100]"
+          className="shrink-0 rounded-sm bg-[#a32b2b] px-4 py-2 text-sm font-medium text-[#ffffff] hover:bg-[#842020] disabled:opacity-50"
         >
           {generating ? t("exporting") : t("exportPdf")}
         </button>
@@ -238,13 +239,13 @@ export default function StepResult({
       {/* Deliberately light regardless of the app's dark theme — this is the same "report" content
           that gets captured as the PDF/share card (ShareCard.tsx), so it must always look like
           what gets exported: white background, black price card. */}
-      <div className="flex flex-col gap-6 rounded-2xl border border-zinc-200 bg-white p-6 text-zinc-900">
-        <div className="flex flex-col items-center gap-1 rounded-2xl bg-zinc-900 py-10 text-white">
-          <span className="text-sm text-zinc-400">{t("estimatedCost")}</span>
+      <div className="flex flex-col gap-6 rounded-sm border border-zinc-200 bg-white p-4 text-zinc-900 shadow-none sm:p-6">
+        <div className="flex flex-col items-center gap-1 rounded-sm bg-[#eceee9] py-10 text-stone-900">
+          <span className="text-sm text-stone-600">{t("estimatedCost")}</span>
           <span className="text-4xl font-bold">
             {formatUsd(calculation.totalMonthlyCost)}
           </span>
-          <span className="text-zinc-400">
+          <span className="text-stone-600">
             {formatKrw(calculation.totalMonthlyCostKrw)}
           </span>
         </div>
@@ -285,11 +286,11 @@ export default function StepResult({
             <p className="mt-1 text-sm text-indigo-800">
               {calculation.recommendationMetadata.description}
             </p>
-            <p className="mt-3 rounded-lg bg-white/60 p-3 text-sm text-indigo-900">
+            <p className="mt-3 rounded-sm bg-white/60 p-3 text-sm text-indigo-900">
               {calculation.recommendationMetadata.recommendationReason}
             </p>
             {calculation.recommendationMetadata.additionalRecommendations.length > 0 && (
-              <div className="mt-3 rounded-lg border p-3 text-sm border-amber-200 bg-amber-50 text-amber-900">
+              <div className="mt-3 rounded-sm border p-3 text-sm border-amber-200 bg-amber-50 text-amber-900">
                 <div className="font-medium">{t("additionalRecommendations")}</div>
                 <ul className="mt-2 list-disc space-y-1 pl-5">
                   {calculation.recommendationMetadata.additionalRecommendations.map((item, index) => (
@@ -329,7 +330,7 @@ export default function StepResult({
               <button
                 onClick={handleOptimize}
                 disabled={optimizing || !projectId}
-                className="mt-3 rounded-full px-4 py-2 text-sm font-medium text-white disabled:opacity-50 bg-emerald-700 hover:bg-emerald-600"
+                className="mt-3 rounded-full px-4 py-2 text-sm font-medium text-stone-900 disabled:opacity-50 bg-emerald-700 hover:bg-emerald-600"
               >
                 {optimizing ? t("analyzing") : t("optimizeCta")}
               </button>
@@ -386,13 +387,13 @@ export default function StepResult({
       <div className="flex gap-3">
         <button
           onClick={onBack}
-          className="rounded-full border px-5 py-3 font-medium border-zinc-700 text-zinc-300 hover:bg-zinc-900"
+          className="rounded-sm border border-stone-300 px-5 py-3 font-medium text-stone-700 hover:bg-stone-100"
         >
           {t("editConfig")}
         </button>
         <button
           onClick={onRestart}
-          className="flex-1 rounded-full px-5 py-3 font-medium bg-[#ff9900] text-[#161e2d] hover:bg-[#f2a100]"
+          className="flex-1 rounded-sm bg-[#a32b2b] px-5 py-3 font-medium text-[#ffffff] hover:bg-[#842020]"
         >
           {t("restart")}
         </button>

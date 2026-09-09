@@ -1,8 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f7f7f4;
+  --foreground: #20221f;
+  --surface: #111827;
+  --surface-raised: #172033;
+  --line: rgba(148, 163, 184, 0.18);
+  --accent: #a32b2b;
 }
 
 @theme inline {
@@ -12,15 +16,68 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+input, select, textarea { color: #252923; }
+
+::selection {
+  background: #a32b2b;
+  color: #fff;
+}
+
+* { letter-spacing: 0 !important; }
+a, button, input, select, textarea { outline-offset: 4px; }
+:focus-visible { outline: 2px solid #a32b2b; }
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; }
+.case-landing { background: #e8ebe6; min-height: 100vh; padding: 0 24px 64px; }
+.archive-nav { max-width: 960px; margin: auto; min-height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 16px; font: 12px var(--font-geist-mono), monospace; }
+.case-document { max-width: 960px; margin: auto; background: #fcfcfa; padding: 28px 64px 24px; border-top: 5px solid #252923; }
+.case-reference, .case-kicker, .case-metadata, .case-section-heading, .case-footer, .case-note { font-family: var(--font-geist-mono), monospace; }
+.case-reference { display: flex; justify-content: space-between; gap: 16px; border-bottom: 1px solid #b9beb5; padding-bottom: 18px; color: #62665e; font-size: 11px; }
+.case-cover { padding: 36px 0 28px; }
+.case-kicker { color: #a32b2b; font-size: 12px; font-weight: 600; }
+.case-cover h1 { font: 700 56px/1.1 Georgia, serif; margin: 18px 0; overflow-wrap: anywhere; }
+.case-period { color: #a32b2b; }
+.case-lead { font-size: 22px; font-weight: 600; line-height: 1.5; }
+.case-description { max-width: 620px; font-size: 15px; line-height: 1.8; margin-top: 12px; color: #555d53; }
+.case-metadata { display: flex; flex-wrap: wrap; align-items: center; gap: 30px; margin: 26px 0; border-block: 1px solid #cbd0c7; padding: 18px 0; font-size: 12px; }
+.case-metadata div { display: grid; gap: 8px; }
+.case-metadata div > span { font-size: 10px; color: #656b60; }
+.redacted-name { background: #252923; color: #252923; user-select: none; }
+.case-stamp { margin-left: auto; color: #a32b2b; border: 3px double; padding: 8px 12px; transform: rotate(-5deg); }
+.case-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 24px; }
+.case-primary { display: inline-flex; gap: 40px; align-items: center; background: #a32b2b; color: white; padding: 14px 20px; font-size: 14px; font-weight: 600; }
+.case-primary:hover { background: #842020; }
+.case-secondary { font-size: 13px; text-decoration: underline; text-underline-offset: 5px; }
+.case-note { font-size: 11px; line-height: 1.7; color: #656b60; margin-top: 14px; }
+.case-section-heading { display:flex; justify-content:space-between; padding: 18px 0; border-block: 1px solid #252923; font-size: 12px; }
+.case-section-heading h2 { font-weight: 600; }
+.case-method { display: grid; grid-template-columns: 40px 1fr 20px; gap: 16px; padding: 22px 0; border-bottom: 1px solid #cbd0c7; align-items: start; }
+.case-method:hover { background: #f0f2ec; }
+.case-method-number { color: #a32b2b; font: 13px var(--font-geist-mono), monospace; }
+.case-method h3 { font-size: 16px; font-weight: 600; }
+.case-method p { margin-top: 6px; color: #62665e; font-size: 13px; line-height: 1.7; }
+.case-footer { padding-top: 26px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 10px; color: #62665e; }
+@media(max-width: 600px) {
+  .case-landing { padding: 0 12px 24px; }
+  .archive-nav { font-size: 10px; min-height: 64px; }
+  .case-document { padding: 22px 20px; }
+  .case-cover { padding-top: 28px; }
+  .case-cover h1 { font-size: 36px; }
+  .case-lead { font-size: 18px; }
+  .case-metadata { gap: 18px; }
+  .case-stamp { font-size: 10px; padding: 5px; }
+  .case-method { grid-template-columns: 24px 1fr 14px; gap: 10px; }
 }

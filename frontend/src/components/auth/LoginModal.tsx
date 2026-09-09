@@ -43,21 +43,21 @@ export default function LoginModal({ open, onClose, onSuccess }: Props) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm">
-      <div className="w-full max-w-md overflow-hidden rounded-lg border shadow-2xl border-slate-800 bg-slate-950">
-        <div className="flex items-start justify-between gap-4 bg-[#232f3e] px-6 py-5 text-white">
+      <div className="w-full max-w-md overflow-hidden rounded-sm border shadow-2xl border-slate-800 bg-white">
+        <div className="flex items-start justify-between gap-4 bg-stone-100 px-6 py-5 text-stone-900">
           <div>
-            <div className="text-xs font-semibold uppercase text-[#ff9900]">{t("brand")}</div>
+            <div className="text-xs font-semibold uppercase text-[#a32b2b]">{t("brand")}</div>
             <h2 className="mt-1 text-lg font-semibold">
               {mode === "login" ? t("loginTitle") : t("signupTitle")}
             </h2>
-            <p className="mt-1 text-sm text-slate-300">
+            <p className="mt-1 text-sm text-stone-700">
               {t("subtitle")}
             </p>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="grid h-8 w-8 place-items-center rounded border border-white/20 text-sm text-slate-200 hover:bg-white/10"
+            className="grid h-8 w-8 place-items-center rounded border border-stone-300 text-sm text-stone-800 hover:bg-stone-200"
           >
             x
           </button>
@@ -65,38 +65,38 @@ export default function LoginModal({ open, onClose, onSuccess }: Props) {
 
         <form onSubmit={handleSubmit} className="grid gap-4 p-6">
           <label className="grid gap-2">
-            <span className="text-sm font-medium text-slate-300">{t("email")}</span>
+            <span className="text-sm font-medium text-stone-700">{t("email")}</span>
             <input
               type="email"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
               required
-              className="rounded border px-3 py-2 text-sm outline-none focus:border-[#ff9900] border-slate-700 bg-slate-900 text-slate-50"
+              className="rounded border px-3 py-2 text-sm outline-none focus:border-[#a32b2b] border-slate-700 bg-stone-100 text-stone-900"
               placeholder="you@example.com"
             />
           </label>
 
           {mode === "signup" && (
             <label className="grid gap-2">
-              <span className="text-sm font-medium text-slate-300">{t("nickname")}</span>
+              <span className="text-sm font-medium text-stone-700">{t("nickname")}</span>
               <input
                 value={nickname}
                 onChange={(event) => setNickname(event.target.value)}
-                className="rounded border px-3 py-2 text-sm outline-none focus:border-[#ff9900] border-slate-700 bg-slate-900 text-slate-50"
+                className="rounded border px-3 py-2 text-sm outline-none focus:border-[#a32b2b] border-slate-700 bg-stone-100 text-stone-900"
                 placeholder={t("nicknamePlaceholder")}
               />
             </label>
           )}
 
           <label className="grid gap-2">
-            <span className="text-sm font-medium text-slate-300">{t("password")}</span>
+            <span className="text-sm font-medium text-stone-700">{t("password")}</span>
             <input
               type="password"
               minLength={8}
               value={password}
               onChange={(event) => setPassword(event.target.value)}
               required
-              className="rounded border px-3 py-2 text-sm outline-none focus:border-[#ff9900] border-slate-700 bg-slate-900 text-slate-50"
+              className="rounded border px-3 py-2 text-sm outline-none focus:border-[#a32b2b] border-slate-700 bg-stone-100 text-stone-900"
               placeholder={t("passwordPlaceholder")}
             />
           </label>
@@ -110,7 +110,7 @@ export default function LoginModal({ open, onClose, onSuccess }: Props) {
           <button
             type="submit"
             disabled={loading}
-            className="rounded bg-[#ff9900] px-4 py-2.5 text-sm font-semibold text-[#161e2d] hover:bg-[#f2a100] disabled:opacity-50"
+            className="rounded bg-[#a32b2b] px-4 py-2.5 text-sm font-semibold text-[#ffffff] hover:bg-[#842020] disabled:opacity-50"
           >
             {loading ? t("processing") : mode === "login" ? t("login") : t("signup")}
           </button>
@@ -121,7 +121,7 @@ export default function LoginModal({ open, onClose, onSuccess }: Props) {
               setMode(mode === "login" ? "signup" : "login");
               setError(null);
             }}
-            className="text-sm font-medium underline-offset-2 hover:underline text-slate-400"
+            className="text-sm font-medium underline-offset-2 hover:underline text-stone-600"
           >
             {mode === "login" ? t("noAccount") : t("haveAccount")}
           </button>
@@ -130,7 +130,7 @@ export default function LoginModal({ open, onClose, onSuccess }: Props) {
         <div className="border-t p-6 border-slate-800">
           <a
             href={GOOGLE_LOGIN_URL}
-            className="flex items-center justify-center gap-3 rounded border px-4 py-2.5 text-sm font-medium transition border-slate-600 bg-slate-900 text-slate-100 hover:bg-slate-800"
+            className="flex items-center justify-center gap-3 rounded border px-4 py-2.5 text-sm font-medium transition border-slate-600 bg-stone-100 text-stone-900 hover:bg-stone-200"
           >
             <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
               <path fill="#4285F4" d="M17.64 9.2045c0-.6381-.0573-1.2518-.1636-1.8409H9v3.4814h4.8436c-.2086 1.125-.8427 2.0782-1.7959 2.7164v2.2581h2.9087c1.7018-1.5668 2.6836-3.874 2.6836-6.615z" />

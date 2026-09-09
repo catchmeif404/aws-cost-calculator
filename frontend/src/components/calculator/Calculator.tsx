@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import { useSearchParams } from "next/navigation";
 import {
   addResource,
   ApiError,
@@ -40,7 +41,8 @@ function buildStarterResources(catalog: ResourceCatalogItem[]): ResourceInstance
 
 export default function Calculator() {
   const t = useTranslations("calculator");
-  const [mode, setMode] = useState<Mode>("wizard");
+  const requestedMode = useSearchParams().get("mode");
+  const [mode, setMode] = useState<Mode>(requestedMode === "visual" || requestedMode === "recommend" ? requestedMode : "wizard");
   const [step, setStep] = useState<Step>(1);
   const [form, setForm] = useState<CalculatorForm>(DEFAULT_FORM);
 
@@ -196,12 +198,12 @@ export default function Calculator() {
     setStep(1);
   }
 
-  const shellClass = mode === "visual" ? "w-full" : "mx-auto w-full max-w-6xl";
+  const shellClass = mode === "visual" ? "w-full" : "mx-auto w-full max-w-5xl";
   const tabClass = (targetMode: Mode) =>
-    `rounded-md px-3 py-2 transition-colors ${
+    `min-w-0 break-words rounded-sm px-2 py-2.5 text-xs sm:text-sm transition-colors ${
       mode === targetMode
-        ? "bg-[#ff9900] text-[#161e2d] shadow-sm"
-        : "text-slate-200 hover:bg-white/10 hover:text-white"
+        ? "bg-[#a32b2b] text-[#ffffff] shadow-sm"
+        : "text-stone-800 hover:bg-stone-200 hover:text-stone-900"
     }`;
 
   return (
@@ -211,7 +213,7 @@ export default function Calculator() {
         onClose={() => setLoginModalOpen(false)}
         onSuccess={() => window.location.reload()}
       />
-      <div className={`${shellClass} mb-6 grid grid-cols-3 rounded-lg border border-slate-700 bg-[#232f3e] p-1 text-sm font-semibold shadow-sm`}>
+      <div className={`${shellClass} mb-8 grid grid-cols-3 rounded-sm border border-stone-300 bg-[#eceee9] p-1 text-sm font-semibold shadow-none`}>
         <button
           type="button"
           onClick={() => {
@@ -239,6 +241,7 @@ export default function Calculator() {
       </div>
 
       {mode === "visual" && step !== 3 && (
+        <div className="w-full min-w-0 overflow-x-auto">
         <VisualArchitectureBuilder
           form={form}
           resourceCatalog={resourceCatalog}
@@ -254,6 +257,7 @@ export default function Calculator() {
           initialGroups={visualInitialLayout?.groups}
           initialConnections={visualInitialLayout?.connections}
         />
+        </div>
       )}
 
       {mode === "recommend" && (
@@ -269,11 +273,11 @@ export default function Calculator() {
 
       {mode === "wizard" && step !== 3 && (
         <div className={shellClass}>
-      <div className="mb-6 flex items-center gap-2">
+      <div className="mb-6 flex items-center gap-2" aria-label="Wizard progress">
         {[1, 2, 3].map((s) => (
           <div
             key={s}
-            className={`h-1.5 flex-1 rounded-full ${ s <= step ? "bg-[#ff9900]" : "bg-slate-200 bg-slate-800" }`}
+            className={`h-1.5 flex-1 rounded-full transition-colors ${s <= step ? "bg-[#a32b2b]" : "bg-stone-200"}`}
           />
         ))}
       </div>
