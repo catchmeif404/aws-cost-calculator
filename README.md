@@ -8,6 +8,8 @@ Live demo: **[aws-costpilot.trade](https://aws-costpilot.trade)**
 
 `catchmeif404`
 
+[한국어](README.ko.md) · **English**
+
 </div>
 
 ---
