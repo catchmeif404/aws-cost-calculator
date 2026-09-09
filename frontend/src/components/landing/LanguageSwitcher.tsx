@@ -1,68 +1,55 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useTransition } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { routing } from "@/i18n/routing";
+import { routing, type Locale } from "@/i18n/routing";
 
-const LABELS: Record<string, string> = {
+const LABELS: Record<Locale, string> = {
   ko: "한국어",
   en: "English",
 };
 
 export default function LanguageSwitcher() {
-  const locale = useLocale();
+  const locale = useLocale() as Locale;
   const t = useTranslations("common");
   const pathname = usePathname();
   const router = useRouter();
-  const [open, setOpen] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [pending, startTransition] = useTransition();
 
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
-        setOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  function switchTo(nextLocale: string) {
-    setOpen(false);
-    router.replace(pathname, { locale: nextLocale });
+  function switchTo(nextLocale: Locale) {
+    if (nextLocale === locale) return;
+    startTransition(() => {
+      router.replace(`${pathname}${window.location.search}${window.location.hash}`, {
+        locale: nextLocale,
+        scroll: false,
+      });
+    });
   }
 
   return (
-    <div className="relative" ref={containerRef}>
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        aria-label={t("language")}
-        aria-expanded={open}
-        className="grid h-9 w-9 place-items-center rounded-full border border-white/15 text-slate-300 hover:bg-white/10 hover:text-white"
-      >
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-5 w-5">
-          <circle cx="12" cy="12" r="9" />
-          <path d="M3 12h18M12 3c2.5 2.5 3.8 5.7 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.7-3.8-9s1.3-6.5 3.8-9Z" />
-        </svg>
-      </button>
-      {open && (
-        <div className="absolute right-0 mt-2 w-32 overflow-hidden rounded-lg border border-white/10 bg-[#0e1626] py-1 shadow-xl">
-          {routing.locales.map((loc) => (
-            <button
-              key={loc}
-              type="button"
-              onClick={() => switchTo(loc)}
-              className={`block w-full px-3 py-2 text-left text-sm ${
-                loc === locale ? "font-semibold text-[#ff9900]" : "text-slate-300 hover:bg-white/10 hover:text-white"
-              }`}
-            >
-              {LABELS[loc]}
-            </button>
-          ))}
-        </div>
-      )}
+    <div
+      className="inline-flex items-center rounded-full border border-white/15 bg-white/5 p-1"
+      role="tablist"
+      aria-label={t("language")}
+    >
+      {routing.locales.map((loc) => (
+        <button
+          key={loc}
+          type="button"
+          role="tab"
+          aria-selected={loc === locale}
+          disabled={pending}
+          onClick={() => switchTo(loc)}
+          className={`rounded-full px-2.5 py-1 text-xs transition-colors sm:px-3 ${
+            loc === locale
+              ? "bg-[#ff9900] font-semibold text-[#161e2d]"
+              : "text-slate-300 hover:bg-white/10 hover:text-white"
+          }`}
+        >
+          {LABELS[loc]}
+        </button>
+      ))}
     </div>
   );
 }
