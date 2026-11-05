@@ -18,7 +18,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Orchestrates the (now AI-driven) cost optimization feature: tries whichever {@link
@@ -45,7 +44,14 @@ public class OptimizationService {
     @Value("${ai.optimization.provider:codex-cli}")
     private String advisorProvider;
 
-    @Transactional(readOnly = true)
+    // Deliberately NOT @Transactional: adviceFor() makes a 3-60s LLM call, and a transaction here
+    // would pin a Hikari connection for that whole time (10 concurrent calls = whole default pool,
+    // shared with login and /calculate). Each repository call below runs in its own short
+    // transaction instead. That's safe because everything read after them is either a scalar
+    // column, Resource.project (EAGER — see Resource), or Project.user only via getId(), which a
+    // Hibernate proxy answers without initializing. Same shape as ExplanationService. Don't fix
+    // this by splitting into a @Transactional helper in this class — self-invocation bypasses the
+    // Spring proxy and the annotation would silently stop applying.
     public OptimizationResponse optimize(Long projectId, Long userId, String locale) {
         Project project = projectService.getOwnedOrThrow(projectId, userId);
         List<Resource> resources = resourceRepository.findByProjectId(projectId);
